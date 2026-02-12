@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: white;
+}
+
+#scrolly {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.graphic {
+  position: sticky;
+  top: 0;
+  width: 50%;
+  height: 100vh;
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#viz {
+  width: 80%;
+  height: 80%;
+}
+
+.text {
+  width: 50%;
+  padding: 100px 50px;
+}
+
+.step {
+  margin: 0 auto 400px auto;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0.3;
+}
+
+.step-2 {
+  margin: 0 auto 400px auto;
+  padding: 20px;
+  /* background: rgba(255,255,255,0.05); */
+  /* border-radius: 10px; */
+  /* transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0.3; */
+}
+
+.step.is-active {
+  opacity: 1;
+  transform: scale(1.02);
+}

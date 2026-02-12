@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scrollytelling Framework</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Scrollama -->
+  <script src="https://unpkg.com/scrollama"></script>
+
+  <!-- D3 -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+
+  <section id="scrolly">
+
+    <!-- Graphic (Sticky) -->
+    <div class="graphic">
+      <svg id="viz"></svg>
+    </div>
+
+    <!-- Text Steps -->
+    <div class="text">
+     <div class="step-2" data-step="0.1">
+        <h2></h2>
+        <p></p>
+      </div>
+
+     <div class="step-2" data-step="0.5">
+        <h2></h2>
+        <p></p>
+      </div>
+
+      <div class="step" data-step="0">
+        <h2>Introduction</h2>
+        <p>This is the beginning of the story.</p>
+      </div>
+
+      <div class="step" data-step="1">
+        <h2>Data Appears</h2>
+        <p>Now we show the first visualization.</p>
+      </div>
+
+      <div class="step" data-step="2">
+        <h2>Transformation</h2>
+        <p>The chart changes based on scroll.</p>
+      </div>
+
+      <div class="step" data-step="3">
+        <h2>Conclusion</h2>
+        <p>Final state of the visualization.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
