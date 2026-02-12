@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overlay Scrollytelling</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://unpkg.com/scrollama"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+
+  <!-- FULLSCREEN VISUALIZATION -->
+  <div class="graphic">
+    <svg id="viz"></svg>
+  </div>
+
+  <!-- SCROLLING TEXT -->
+  <main id="scrolly">
+
+    <section class="step" data-step="0">
+      <div class="content">
+        <h1>Scroll Story</h1>
+        <p>As you scroll, the visualization reacts.</p>
+      </div>
+    </section>
+
+    <section class="step" data-step="0">
+      <div class="content">
+        <h1>Scroll Story</h1>
+        <p>As you scroll, the visualization reacts.</p>
+      </div>
+    </section>
+
+    <section class="step" data-step="1">
+      <div class="content">
+        <h2>Growth</h2>
+        <p>The data expands dramatically.</p>
+      </div>
+    </section>
+
+    <section class="step" data-step="2">
+      <div class="content">
+        <h2>Shift</h2>
+        <p>The perspective changes.</p>
+      </div>
+    </section>
+
+    <section class="step" data-step="3">
+      <div class="content">
+        <h2>Conclusion</h2>
+        <p>The final transformation appears.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
