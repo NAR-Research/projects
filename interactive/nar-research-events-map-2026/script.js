@@ -1,0 +1,962 @@
+const events = [{"event_name": "Salt Lake Board of REALTORS®", "event_type": "In Person", "event_date": "2026-01-07", "weekday": "Wednesday", "time": "", "time_zone": "Mountain Time", "speaker": "Jessica Lautz", "location": "Salt Lake City, Utah", "location_clean": "Salt Lake City, Utah", "city": "Salt Lake City", "state_name": "Utah", "state_abbr": "UT", "description": "", "is_mappable": true, "event_start": "2026-01-07", "event_end": "2026-01-07", "event_date_display": "01/07/2026", "event_month": "January"}, {"event_name": "Ventura County Association", "event_type": "In Person", "event_date": "2026-01-07", "weekday": "Wednesday", "time": "3:00pm - 5:30pm", "time_zone": "Pacific Time", "speaker": "Lawrence Yun", "location": "Oxnard, California", "location_clean": "Oxnard, California", "city": "Oxnard", "state_name": "California", "state_abbr": "CA", "description": "", "is_mappable": true, "event_start": "2026-01-07", "event_end": "2026-01-07", "event_date_display": "01/07/2026", "event_month": "January"}, {"event_name": "Denver Association", "event_type": "In Person", "event_date": "2026-01-08", "weekday": "Thursday", "time": "10:00am - 12:30pm", "time_zone": "Mountain Time", "speaker": "Lawrence Yun", "location": "Denver, Colorado", "location_clean": "Denver, Colorado", "city": "Denver", "state_name": "Colorado", "state_abbr": "CO", "description": "", "is_mappable": true, "event_start": "2026-01-08", "event_end": "2026-01-08", "event_date_display": "01/08/2026", "event_month": "January"}, {"event_name": "CT REALTORS® in DC", "event_type": "In Person", "event_date": "2026-01-09", "weekday": "Friday", "time": "1:15pm - 2:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location": "Washington, DC", "location_clean": "Washington, DC", "city": "Washington", "state_name": "District of Columbia", "state_abbr": "DC", "description": "", "is_mappable": true, "event_start": "2026-01-09", "event_end": "2026-01-09", "event_date_display": "01/09/2026", "event_month": "January"}, {"event_name": "Florida REALTORS®", "event_type": "In Person", "event_date": "2026-01-09", "weekday": "Friday", "time": "", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location": "Orlando, Florida", "location_clean": "Orlando, Florida", "city": "Orlando", "state_name": "Florida", "state_abbr": "FL", "description": "", "is_mappable": true, "event_start": "2026-01-09", "event_end": "2026-01-09", "event_date_display": "01/09/2026", "event_month": "January"}, {"event_name": "NAR Leadership Academy", "event_type": "In Person", "event_date": "2026-01-09", "weekday": "Friday", "time": "10:00am - 10:45am", "time_zone": "Eastern Time", "speaker": "Nadia Evangelou,  Matt Christopherson", "location": "Washington, DC", "location_clean": "Washington, DC", "city": "Washington", "state_name": "District of Columbia", "state_abbr": "DC", "description": "", "is_mappable": true, "event_start": "2026-01-09", "event_end": "2026-01-09", "event_date_display": "01/09/2026", "event_month": "January"}, {"event_name": "Chicago Association", "event_type": "In Person", "event_date": "2026-01-12", "weekday": "Monday", "time": "3:00pm - 6:00pm", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location": "Chicago, Illinois", "location_clean": "Chicago, Illinois", "city": "Chicago", "state_name": "Illinois", "state_abbr": "IL", "description": "", "is_mappable": true, "event_start": "2026-01-12", "event_end": "2026-01-12", "event_date_display": "01/12/2026", "event_month": "January"}, {"event_name": "Traverse City Aspire Association", "event_type": "In Person", "event_date": "2026-01-15", "weekday": "Thursday", "time": "10:00am - 12:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location": "Traverse City, Michigan", "location_clean": "Traverse City, Michigan", "city": "Traverse City", "state_name": "Michigan", "state_abbr": "MI", "description": "", "is_mappable": true, "event_start": "2026-01-15", "event_end": "2026-01-15", "event_date_display": "01/15/2026", "event_month": "January"}, {"event_name": "Princeton Mercer County RE Outlook", "event_type": "In Person", "event_date": "2026-01-23", "weekday": "Friday", "time": "8:30am - 11:00am", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location": "Princeton, New Jersey", "location_clean": "Princeton, New Jersey", "city": "Princeton", "state_name": "New Jersey", "state_abbr": "NJ", "description": "", "is_mappable": true, "event_start": "2026-01-23", "event_end": "2026-01-23", "event_date_display": "01/23/2026", "event_month": "January"}, {"event_name": "Dallas Metro Association (postponed to March)", "event_type": "In Person", "event_date": "2026-01-27", "weekday": "Tuesday", "time": "12:00pm - 2:00pm", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location": "Dallas, Texas", "location_clean": "Dallas, Texas", "city": "Dallas", "state_name": "Texas", "state_abbr": "TX", "description": "", "is_mappable": true, "event_start": "2026-01-27", "event_end": "2026-01-27", "event_date_display": "01/27/2026", "event_month": "January"}, {"event_name": "Bryan College Station Economic Outlook", "event_type": "In Person", "event_date": "2026-01-28", "weekday": "Wednesday", "time": "3:00pm - 4:00pm", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location": "College Station, Texas", "location_clean": "College Station, Texas", "city": "College Station", "state_name": "Texas", "state_abbr": "TX", "description": "", "is_mappable": true, "event_start": "2026-01-28", "event_end": "2026-01-28", "event_date_display": "01/28/2026", "event_month": "January"}, {"event_name": "Greater Portland Membership Meeting & Sustainability Class", "event_type": "In Person", "event_date": "2026-01-28", "weekday": "Wednesday", "time": "", "time_zone": "Eastern Time", "speaker": "Matt Christopherson", "location": "Portland, Maine", "location_clean": "Portland, Maine", "city": "Portland", "state_name": "Maine", "state_abbr": "ME", "description": "", "is_mappable": true, "event_start": "2026-01-28", "event_end": "2026-01-28", "event_date_display": "01/28/2026", "event_month": "January"}, {"event_name": "Frederick County Association MD", "event_type": "In Person", "event_date": "2026-01-29", "weekday": "Thursday", "time": "12:00pm - 1:30pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location": "Frederick, Maryland", "location_clean": "Frederick, Maryland", "city": "Frederick", "state_name": "Maryland", "state_abbr": "MD", "description": "", "is_mappable": true, "event_start": "2026-01-29", "event_end": "2026-01-29", "event_date_display": "01/29/2026", "event_month": "January"}, {"event_name": "New Jersey AOR", "event_type": "In Person", "event_date": "2026-01-29", "weekday": "Thursday", "time": "11:00am - 12:00pm", "time_zone": "Eastern Time", "speaker": "Brandi Snowden", "location": "Cherry Hill, New Jersey", "location_clean": "Cherry Hill, New Jersey", "city": "Cherry Hill", "state_name": "New Jersey", "state_abbr": "NJ", "description": "", "is_mappable": true, "event_start": "2026-01-29", "event_end": "2026-01-29", "event_date_display": "01/29/2026", "event_month": "January"}, {"event_name": "Washington Association of REALTORS®", "event_type": "In Person", "event_date": "2026-01-29", "weekday": "Thursday", "time": "", "time_zone": "Pacific Time", "speaker": "Jessica Lautz", "location": "Olympia, Washington", "location_clean": "Olympia, Washington", "city": "Olympia", "state_name": "Washington", "state_abbr": "WA", "description": "", "is_mappable": true, "event_start": "2026-01-29", "event_end": "2026-01-29", "event_date_display": "01/29/2026", "event_month": "January"}, {"event_name": "Nest Realty", "event_type": "In Person", "event_date": "2026-02-02", "weekday": "Monday", "time": "", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location": "Richmond, Virginia", "location_clean": "Richmond, Virginia", "city": "Richmond", "state_name": "Virginia", "state_abbr": "VA", "description": "", "is_mappable": true, "event_start": "2026-02-02", "event_end": "2026-02-02", "event_date_display": "02/02/2026", "event_month": "February"}, {"event_name": "Ohio Association", "event_type": "In Person", "event_date": "2026-02-02", "weekday": "Monday", "time": "11:00am - 12:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location": "Columbus, Ohio", "location_clean": "Columbus, Ohio", "city": "Columbus", "state_name": "Ohio", "state_abbr": "OH", "description": "", "is_mappable": true, "event_start": "2026-02-02", "event_end": "2026-02-02", "event_date_display": "02/02/2026", "event_month": "February"}, {"event_name": "Albuquerque Residential Brokers", "event_type": "In Person", "event_date": "2026-02-04", "weekday": "Wednesday", "time": "9:00am - 10:00am", "time_zone": "Mountain Time", "speaker": "Jessica Lautz", "location": "Albuquerque, New Mexico", "location_clean": "Albuquerque, New Mexico", "city": "Albuquerque", "state_name": "New Mexico", "state_abbr": "NM", "description": "", "is_mappable": true, "event_start": "2026-02-04", "event_end": "2026-02-04", "event_date_display": "02/04/2026", "event_month": "February"}, {"event_name": "CCIM New Mexico", "event_type": "In Person", "event_date": "2026-02-04", "weekday": "Wednesday", "time": "8:00am - 9:00am", "time_zone": "Mountain Time", "speaker": "Jessica Lautz", "location": "Albuquerque, New Mexico", "location_clean": "Albuquerque, New Mexico", "city": "Albuquerque", "state_name": "New Mexico", "state_abbr": "NM", "description": "", "is_mappable": true, "event_start": "2026-02-04", "event_end": "2026-02-04", "event_date_display": "02/04/2026", "event_month": "February"}, {"event_name": "SC Leadership Academy", "event_type": "In Person", "event_date": "2026-02-04", "weekday": "Wednesday", "time": "9:15am - 9:45am", "time_zone": "Eastern Time", "speaker": "Matt Christopherson", "location": "Washington, DC", "location_clean": "Washington, DC", "city": "Washington", "state_name": "District of Columbia", "state_abbr": "DC", "description": "", "is_mappable": true, "event_start": "2026-02-04", "event_end": "2026-02-04", "event_date_display": "02/04/2026", "event_month": "February"}, {"event_name": "Fidelity National Title", "event_type": "In Person", "event_date": "2026-02-05", "weekday": "Thursday", "time": "", "time_zone": "Mountain Time", "speaker": "Jessica Lautz", "location": "Albuquerque, New Mexico", "location_clean": "Albuquerque, New Mexico", "city": "Albuquerque", "state_name": "New Mexico", "state_abbr": "NM", "description": "", "is_mappable": true, "event_start": "2026-02-05", "event_end": "2026-02-05", "event_date_display": "02/05/2026", "event_month": "February"}, {"event_name": "NAI Commercial brokerage in Nebraska", "event_type": "In Person", "event_date": "2026-02-05", "weekday": "Thursday", "time": "3:30pm - 5:30pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location": "Lincoln, Nebraska", "location_clean": "Lincoln, Nebraska", "city": "Lincoln", "state_name": "Nebraska", "state_abbr": "NE", "description": "", "is_mappable": true, "event_start": "2026-02-05", "event_end": "2026-02-05", "event_date_display": "02/05/2026", "event_month": "February"}, {"event_name": "Lincoln and Omaha Associations", "event_type": "In Person", "event_date": "2026-02-06", "weekday": "Friday", "time": "10:00am - 11:00am", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location": "Omaha, Nebraska", "location_clean": "Omaha, Nebraska", "city": "Omaha", "state_name": "Nebraska", "state_abbr": "NE", "description": "", "is_mappable": true, "event_start": "2026-02-06", "event_end": "2026-02-06", "event_date_display": "02/06/2026", "event_month": "February"}, {"event_name": "St Louis REALTORS®", "event_type": "In Person", "event_date": "2026-02-06", "weekday": "Friday", "time": "8:00am - 11:00am", "time_zone": "Central Time", "speaker": "Matt Christopherson", "location": "St. Louis, Missouri", "location_clean": "St. Louis, Missouri", "city": "St. Louis", "state_name": "Missouri", "state_abbr": "MO", "description": "", "is_mappable": true, "event_start": "2026-02-06", "event_end": "2026-02-06", "event_date_display": "02/06/2026", "event_month": "February"}, {"event_name": "St. Charles REALTORS®", "event_type": "In Person", "event_date": "2026-02-06", "weekday": "Friday", "time": "12:00pm - 2:00pm", "time_zone": "Central Time", "speaker": "Matt Christopherson", "location": "St. Charles, Missouri", "location_clean": "St. Charles, Missouri", "city": "St. Charles", "state_name": "Missouri", "state_abbr": "MO", "description": "", "is_mappable": true, "event_start": "2026-02-06", "event_end": "2026-02-06", "event_date_display": "02/06/2026", "event_month": "February"}, {"event_name": "Housing Wire Economic Summit", "event_type": "In Person", "event_date": "2026-02-10", "weekday": "Tuesday", "time": "", "time_zone": "Central Time", "speaker": "Jessica Lautz", "location": "Dallas, Texas", "location_clean": "Dallas, Texas", "city": "Dallas", "state_name": "Texas", "state_abbr": "TX", "description": "", "is_mappable": true, "event_start": "2026-02-10", "event_end": "2026-02-10", "event_date_display": "02/10/2026", "event_month": "February"}, {"event_name": "Williamson County TN broker summit", "event_type": "In Person", "event_date": "2026-02-10", "weekday": "Tuesday", "time": "10:00am - 11:00am", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location": "Nashville, Tennessee", "location_clean": "Nashville, Tennessee", "city": "Nashville", "state_name": "Tennessee", "state_abbr": "TN", "description": "", "is_mappable": true, "event_start": "2026-02-10", "event_end": "2026-02-10", "event_date_display": "02/10/2026", "event_month": "February"}, {"event_name": "Coldwell Banker Midwest", "event_type": "In Person", "event_date": "2026-02-12", "weekday": "Thursday", "time": "12:00pm - 2:00pm", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location": "Rosemont, Illinois", "location_clean": "Rosemont, Illinois", "city": "Rosemont", "state_name": "Illinois", "state_abbr": "IL", "description": "", "is_mappable": true, "event_start": "2026-02-12", "event_end": "2026-02-12", "event_date_display": "02/12/2026", "event_month": "February"}, {"event_name": "Milwaukee Commercial RE", "event_type": "In Person", "event_date": "2026-02-13", "weekday": "Friday", "time": "10:00am - 11:00am", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location": "Milwaukee, Wisconsin", "location_clean": "Milwaukee, Wisconsin", "city": "Milwaukee", "state_name": "Wisconsin", "state_abbr": "WI", "description": "", "is_mappable": true, "event_start": "2026-02-13", "event_end": "2026-02-13", "event_date_display": "02/13/2026", "event_month": "February"}, {"event_name": "Podcast with @Properties Chicago", "event_type": "In Person", "event_date": "2026-02-13", "weekday": "Friday", "time": "3:00pm - 4:00pm", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location": "Chicago, Illinois", "location_clean": "Chicago, Illinois", "city": "Chicago", "state_name": "Illinois", "state_abbr": "IL", "description": "", "is_mappable": true, "event_start": "2026-02-13", "event_end": "2026-02-13", "event_date_display": "02/13/2026", "event_month": "February"}, {"event_name": "Oregon Association", "event_type": "In Person", "event_date": "2026-02-17", "weekday": "Tuesday", "time": "3:00pm - 4:00pm", "time_zone": "Pacific Time", "speaker": "Lawrence Yun", "location": "Portland, Oregon", "location_clean": "Portland, Oregon", "city": "Portland", "state_name": "Oregon", "state_abbr": "OR", "description": "", "is_mappable": true, "event_start": "2026-02-17", "event_end": "2026-02-17", "event_date_display": "02/17/2026", "event_month": "February"}, {"event_name": "Georgia REALTORS®", "event_type": "In Person", "event_date": "2026-02-19", "weekday": "Thursday", "time": "", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location": "Atlanta, Georgia", "location_clean": "Atlanta, Georgia", "city": "Atlanta", "state_name": "Georgia", "state_abbr": "GA", "description": "", "is_mappable": true, "event_start": "2026-02-19", "event_end": "2026-02-19", "event_date_display": "02/19/2026", "event_month": "February"}, {"event_name": "Sanibel Captiva Association", "event_type": "In Person", "event_date": "2026-02-19", "weekday": "Thursday", "time": "9:00am - 11:00am", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location": "Naples, Florida", "location_clean": "Naples, Florida", "city": "Naples", "state_name": "Florida", "state_abbr": "FL", "description": "", "is_mappable": true, "event_start": "2026-02-19", "event_end": "2026-02-19", "event_date_display": "02/19/2026", "event_month": "February"}, {"event_name": "RPAC President's Circle", "event_type": "In Person", "event_date": "", "weekday": "Monday - Wednesday", "time": "", "time_zone": "Pacific Time", "speaker": "Lawrence Yun", "location": "Las Vegas, Nevada", "location_clean": "Las Vegas, Nevada", "city": "Las Vegas", "state_name": "Nevada", "state_abbr": "NV", "description": "", "is_mappable": true, "event_start": "", "event_end": "", "event_date_display": "", "event_month": ""}, {"event_name": "Perspectives on the U.S. Housing Market-European Embassies", "event_type": "In Person", "event_date": "2026-02-25", "weekday": "Wednesday", "time": "9:30am - 10:30am", "time_zone": "Eastern Time", "speaker": "Nadia Evangelou", "location": "Washington, DC", "location_clean": "Washington, DC", "city": "Washington", "state_name": "District of Columbia", "state_abbr": "DC", "description": "", "is_mappable": true, "event_start": "2026-02-25", "event_end": "2026-02-25", "event_date_display": "02/25/2026", "event_month": "February"}, {"event_name": "Prescott Board of REALTORS®", "event_type": "In Person", "event_date": "2026-02-25", "weekday": "Wednesday", "time": "", "time_zone": "Pacific Time", "speaker": "Jessica Lautz", "location": "Prescott, Arizona", "location_clean": "Prescott, Arizona", "city": "Prescott", "state_name": "Arizona", "state_abbr": "AZ", "description": "", "is_mappable": true, "event_start": "2026-02-25", "event_end": "2026-02-25", "event_date_display": "02/25/2026", "event_month": "February"}, {"event_name": "Fredericksburg Area Assn of  REALTORS®", "event_type": "In Person", "event_date": "2026-02-26", "weekday": "Thursday", "time": "", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location": "Fredericksburg, Virginia", "location_clean": "Fredericksburg, Virginia", "city": "Fredericksburg", "state_name": "Virginia", "state_abbr": "VA", "description": "", "is_mappable": true, "event_start": "2026-02-26", "event_end": "2026-02-26", "event_date_display": "02/26/2026", "event_month": "February"}, {"event_name": "LA AREAA", "event_type": "In Person", "event_date": "2026-02-26", "weekday": "Thursday", "time": "3:00pm - 6:00pm", "time_zone": "Pacific Time", "speaker": "Lawrence Yun", "location": "Los Angeles, California", "location_clean": "Los Angeles, California", "city": "Los Angeles", "state_name": "California", "state_abbr": "CA", "description": "", "is_mappable": true, "event_start": "2026-02-26", "event_end": "2026-02-26", "event_date_display": "02/26/2026", "event_month": "February"}, {"event_name": "Louisiana REALTORS® broker conference", "event_type": "In Person", "event_date": "2026-03-03", "weekday": "Tuesday", "time": "3:30pm - 4:30pm", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location": "Bossier City, Louisiana", "location_clean": "Bossier City, Louisiana", "city": "Bossier City", "state_name": "Louisiana", "state_abbr": "LA", "description": "", "is_mappable": true, "event_start": "2026-03-03", "event_end": "2026-03-03", "event_date_display": "03/03/2026", "event_month": "March"}, {"event_name": "National Institute on Retirement Security", "event_type": "In Person", "event_date": "2026-03-03", "weekday": "Tuesday", "time": "", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location": "Washington, DC", "location_clean": "Washington, DC", "city": "Washington", "state_name": "District of Columbia", "state_abbr": "DC", "description": "", "is_mappable": true, "event_start": "2026-03-03", "event_end": "2026-03-03", "event_date_display": "03/03/2026", "event_month": "March"}, {"event_name": "NAR Influencer Summit", "event_type": "In Person", "event_date": "2026-03-04", "weekday": "Wednesday", "time": "3:30pm - 4:30pm", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location": "Chicago, Illinois", "location_clean": "Chicago, Illinois", "city": "Chicago", "state_name": "Illinois", "state_abbr": "IL", "description": "", "is_mappable": true, "event_start": "2026-03-04", "event_end": "2026-03-04", "event_date_display": "03/04/2026", "event_month": "March"}, {"event_name": "East Central Iowa", "event_type": "In Person", "event_date": "2026-03-05", "weekday": "Thursday", "time": "", "time_zone": "Central Time", "speaker": "Jessica Lautz", "location": "Dubuque,  Iowa", "location_clean": "Dubuque,  Iowa", "city": "Dubuque", "state_name": "Iowa", "state_abbr": "IA", "description": "", "is_mappable": true, "event_start": "2026-03-05", "event_end": "2026-03-05", "event_date_display": "03/05/2026", "event_month": "March"}, {"event_name": "Outer Banks NC", "event_type": "In Person", "event_date": "2026-03-05", "weekday": "Thursday", "time": "12:00pm - 1:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location": "Kitty Hawk, North Carolina", "location_clean": "Kitty Hawk, North Carolina", "city": "Kitty Hawk", "state_name": "North Carolina", "state_abbr": "NC", "description": "", "is_mappable": true, "event_start": "2026-03-05", "event_end": "2026-03-05", "event_date_display": "03/05/2026", "event_month": "March"}, {"event_name": "Iowa City and Cedar Rapids", "event_type": "In Person", "event_date": "2026-03-06", "weekday": "Friday", "time": "", "time_zone": "Central Time", "speaker": "Jessica Lautz", "location": "Cedar Rapids, Iowa", "location_clean": "Cedar Rapids, Iowa", "city": "Cedar Rapids", "state_name": "Iowa", "state_abbr": "IA", "description": "", "is_mappable": true, "event_start": "2026-03-06", "event_end": "2026-03-06", "event_date_display": "03/06/2026", "event_month": "March"}, {"event_name": "C21 New Heritage West", "event_type": "In Person", "event_date": "2026-03-11", "weekday": "Wednesday", "time": "", "time_zone": "Central Time", "speaker": "Lisa Herceg", "location": "Wisconsin", "location_clean": "Wisconsin", "city": "", "state_name": "Wisconsin", "state_abbr": "WI", "description": "", "is_mappable": true, "event_start": "2026-03-11", "event_end": "2026-03-11", "event_date_display": "03/11/2026", "event_month": "March"}, {"event_name": "Gaston Association NC", "event_type": "In Person", "event_date": "2026-03-11", "weekday": "Wednesday", "time": "11:00am - 1:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location": "Gastonia, North Carolina", "location_clean": "Gastonia, North Carolina", "city": "Gastonia", "state_name": "North Carolina", "state_abbr": "NC", "description": "", "is_mappable": true, "event_start": "2026-03-11", "event_end": "2026-03-11", "event_date_display": "03/11/2026", "event_month": "March"}, {"event_name": "Greater Lehigh Valley REALTORS®", "event_type": "In Person", "event_date": "2026-03-11", "weekday": "Wednesday", "time": "", "time_zone": "Eastern Time", "speaker": "Matt Christopherson", "location": "Bethlehem, Pennsylvania", "location_clean": "Bethlehem, Pennsylvania", "city": "Bethlehem", "state_name": "Pennsylvania", "state_abbr": "PA", "description": "", "is_mappable": true, "event_start": "2026-03-11", "event_end": "2026-03-11", "event_date_display": "03/11/2026", "event_month": "March"}, {"event_name": "Arizona REALTORS® Broker Summit", "event_type": "In Person", "event_date": "2026-03-12", "weekday": "Wednesday", "time": "", "time_zone": "Mountain Time", "speaker": "Jessica Lautz", "location": "Phoenix, Arizona", "location_clean": "Phoenix, Arizona", "city": "Phoenix", "state_name": "Arizona", "state_abbr": "AZ", "description": "", "is_mappable": true, "event_start": "2026-03-12", "event_end": "2026-03-12", "event_date_display": "03/12/2026", "event_month": "March"}, {"event_name": "Northeast FL Association of REALTORS®", "event_type": "In Person", "event_date": "2026-03-13", "weekday": "Friday", "time": "", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location": "Jacksonville, Florida", "location_clean": "Jacksonville, Florida", "city": "Jacksonville", "state_name": "Florida", "state_abbr": "FL", "description": "", "is_mappable": true, "event_start": "2026-03-13", "event_end": "2026-03-13", "event_date_display": "03/13/2026", "event_month": "March"}, {"event_name": "SXSW Housing Panel and Single Women Panel with realtor.com", "event_type": "In Person", "event_date": "2026-03-14", "weekday": "Saturday", "time": "", "time_zone": "Central Time", "speaker": "Jessica Lautz", "location": "Austin, Texas", "location_clean": "Austin, Texas", "city": "Austin", "state_name": "Texas", "state_abbr": "TX", "description": "", "is_mappable": true, "event_start": "2026-03-14", "event_end": "2026-03-14", "event_date_display": "03/14/2026", "event_month": "March"}, {"event_name": "Pennymac TPO (mortgage brokers and REALTOR partners)", "event_type": "In Person", "event_date": "2026-03-17", "weekday": "Tuesday", "time": "", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location": "Tampa, Florida", "location_clean": "Tampa, Florida", "city": "Tampa", "state_name": "Florida", "state_abbr": "FL", "description": "", "is_mappable": true, "event_start": "2026-03-17", "event_end": "2026-03-17", "event_date_display": "03/17/2026", "event_month": "March"}, {"event_name": "Aspen Association", "event_type": "In Person", "event_date": "2026-03-18", "weekday": "Wednesday", "time": "12:00pm - 1:00pm", "time_zone": "Mountain Time", "speaker": "Lawrence Yun", "location": "Aspen, Colorado", "location_clean": "Aspen, Colorado", "city": "Aspen", "state_name": "Colorado", "state_abbr": "CO", "description": "", "is_mappable": true, "event_start": "2026-03-18", "event_end": "2026-03-18", "event_date_display": "03/18/2026", "event_month": "March"}, {"event_name": "Flagstaff Association", "event_type": "In Person", "event_date": "2026-03-19", "weekday": "Thursday", "time": "9:00am - 10:00am", "time_zone": "Pacific Time", "speaker": "Lawrence Yun", "location": "Flagstaff, Arizona", "location_clean": "Flagstaff, Arizona", "city": "Flagstaff", "state_name": "Arizona", "state_abbr": "AZ", "description": "", "is_mappable": true, "event_start": "2026-03-19", "event_end": "2026-03-19", "event_date_display": "03/19/2026", "event_month": "March"}, {"event_name": "University of South Alabama RE conference", "event_type": "In Person", "event_date": "2026-03-24", "weekday": "Tuesday", "time": "12:00pm - 1:00pm", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location": "Mobile, Alabama", "location_clean": "Mobile, Alabama", "city": "Mobile", "state_name": "Alabama", "state_abbr": "AL", "description": "", "is_mappable": true, "event_start": "2026-03-24", "event_end": "2026-03-24", "event_date_display": "03/24/2026", "event_month": "March"}, {"event_name": "DCAR YPN 2026 Economic Outlook", "event_type": "In Person", "event_date": "2026-03-25", "weekday": "Wednesday", "time": "4:00pm - 5:00pm", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location": "Washington, DC", "location_clean": "Washington, DC", "city": "Washington", "state_name": "District of Columbia", "state_abbr": "DC", "description": "", "is_mappable": true, "event_start": "2026-03-25", "event_end": "2026-03-25", "event_date_display": "03/25/2026", "event_month": "March"}, {"event_name": "Sotheby's DC", "event_type": "In Person", "event_date": "2026-03-26", "weekday": "Thursday", "time": "10:00am - 11:00am", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location": "Washington, DC", "location_clean": "Washington, DC", "city": "Washington", "state_name": "District of Columbia", "state_abbr": "DC", "description": "", "is_mappable": true, "event_start": "2026-03-26", "event_end": "2026-03-26", "event_date_display": "03/26/2026", "event_month": "March"}, {"event_name": "AEI in Minneapolis", "event_type": "In Person", "event_date": "2026-03-27", "weekday": "Friday", "time": "9:00am - 10:00am", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location": "Minneapolis, Minnesota", "location_clean": "Minneapolis, Minnesota", "city": "Minneapolis", "state_name": "Minnesota", "state_abbr": "MN", "description": "", "is_mappable": true, "event_start": "2026-03-27", "event_end": "2026-03-27", "event_date_display": "03/27/2026", "event_month": "March"}, {"event_name": "Tucson REALTORS®", "event_type": "In Person", "event_date": "2026-03-27", "weekday": "Friday", "time": "", "time_zone": "Mountain Time", "speaker": "Jessica Lautz", "location": "Tucson, Arizona", "location_clean": "Tucson, Arizona", "city": "Tucson", "state_name": "Arizona", "state_abbr": "AZ", "description": "", "is_mappable": true, "event_start": "2026-03-27", "event_end": "2026-03-27", "event_date_display": "03/27/2026", "event_month": "March"}, {"event_name": "Hudson Gateway Association", "event_type": "In Person", "event_date": "2026-03-30", "weekday": "Monday", "time": "", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location": "White Plains, New York", "location_clean": "White Plains, New York", "city": "White Plains", "state_name": "New York", "state_abbr": "NY", "description": "", "is_mappable": true, "event_start": "2026-03-30", "event_end": "2026-03-30", "event_date_display": "03/30/2026", "event_month": "March"}, {"event_name": "Cape Fear Association", "event_type": "In Person", "event_date": "2026-03-31", "weekday": "Tuesday", "time": "9:00am - 10:00am", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location": "Wilmington, North Carolina", "location_clean": "Wilmington, North Carolina", "city": "Wilmington", "state_name": "North Carolina", "state_abbr": "NC", "description": "", "is_mappable": true, "event_start": "2026-03-31", "event_end": "2026-03-31", "event_date_display": "03/31/2026", "event_month": "March"}];
+const months = ["All Events", "January", "February", "March"];
+const virtualEvents = [{"event_name": "Fairbanks AK", "event_date_display": "01/06/2026", "event_month": "January", "weekday": "Tuesday", "time": "", "time_zone": "Alaska Time", "speaker": "Lawrence Yun", "location_display": "Fairbanks, Alaska", "description": ""}, {"event_name": "Anchorage Association", "event_date_display": "01/07/2026", "event_month": "January", "weekday": "Wednesday", "time": "12:00pm - 1:00pm", "time_zone": "Alaska Time", "speaker": "Lawrence Yun", "location_display": "Anchorage, Alaska", "description": ""}, {"event_name": "Portside Brokerage ME", "event_date_display": "01/08/2026", "event_month": "January", "weekday": "Thursday", "time": "9:00am - 10:00am", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Falmouth, Maine", "description": ""}, {"event_name": "Rhode Island REALTORS®", "event_date_display": "01/08/2026", "event_month": "January", "weekday": "Thursday", "time": "11:00am - 12:00pm", "time_zone": "Eastern Time", "speaker": "Nadia Evangelou", "location_display": "Warwick, Rhode Island", "description": ""}, {"event_name": "TCN Commercial RE group", "event_date_display": "01/08/2026", "event_month": "January", "weekday": "Thursday", "time": "1:00pm - 2:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Richardson, Texas", "description": ""}, {"event_name": "Coldwell Banker West Region", "event_date_display": "01/12/2026", "event_month": "January", "weekday": "Monday", "time": "1:00pm - 2:00pm", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location_display": "San Francisco, California", "description": ""}, {"event_name": "Live Unreal Summit of Jeff Glover coaching", "event_date_display": "01/12/2026", "event_month": "January", "weekday": "Monday", "time": "1:30pm - 2:30pm", "time_zone": "Mountain Time", "speaker": "Lawrence Yun", "location_display": "Scottsdale, Arizona", "description": ""}, {"event_name": "Coldwell Banker New York", "event_date_display": "01/13/2026", "event_month": "January", "weekday": "Tuesday", "time": "10:00am - 11:00am", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location_display": "New York City, New York", "description": ""}, {"event_name": "Fox Valley AOR Economic Update", "event_date_display": "01/13/2026", "event_month": "January", "weekday": "Tuesday", "time": "12:00pm - 1:00pm", "time_zone": "Central Time", "speaker": "Matt Christopherson", "location_display": "St. Charles, Illinois", "description": ""}, {"event_name": "Lake Superior Association (MN-WI)", "event_date_display": "01/13/2026", "event_month": "January", "weekday": "Tuesday", "time": "11:00am - 12:00pm", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location_display": "Duluth, Minnesota", "description": ""}, {"event_name": "Mortgage Pros 411-Podcast", "event_date_display": "01/13/2026", "event_month": "January", "weekday": "Tuesday", "time": "2:00pm - 3:00pm", "time_zone": "Eastern Time", "speaker": "Nadia Evangelou", "location_display": "San Francisco, California", "description": ""}, {"event_name": "Sarasota-Manatee Association commercial RE", "event_date_display": "01/13/2026", "event_month": "January", "weekday": "Tuesday", "time": "10:00am - 11:00am", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Sarasota, Florida", "description": ""}, {"event_name": "Sotheby's NJ offices", "event_date_display": "01/13/2026", "event_month": "January", "weekday": "Tuesday", "time": "9:00am - 10:00am", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Madison, New Jersey", "description": ""}, {"event_name": "American Land Title Association", "event_date_display": "01/14/2026", "event_month": "January", "weekday": "Thursday", "time": "1:00pm - 2:00pm", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location_display": "Washington, DC", "description": ""}, {"event_name": "Colorado Association", "event_date_display": "01/14/2026", "event_month": "January", "weekday": "Wednesday", "time": "10:00am - 11:00am", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location_display": "Englewood, Colorado", "description": ""}, {"event_name": "Greater Metro Detroit Association", "event_date_display": "01/14/2026", "event_month": "January", "weekday": "Wednesday", "time": "9:00am - 9:30am", "time_zone": "Eastern Time", "speaker": "Lawrence Yun,  Matt Christopherson", "location_display": "Detroit, Michigan", "description": ""}, {"event_name": "Better Homes Garden Carolinas", "event_date_display": "01/16/2026", "event_month": "January", "weekday": "Friday", "time": "9:00am - 10:00am", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Charlotte, North Carolina", "description": ""}, {"event_name": "Greenwich Association CT", "event_date_display": "01/16/2026", "event_month": "January", "weekday": "Friday", "time": "10:00am - 11:00am", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Greenwich, Connecticut", "description": ""}, {"event_name": "Inspire Mastermind coaching group", "event_date_display": "01/20/2026", "event_month": "January", "weekday": "Tuesday", "time": "12:00pm - 1:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "New York City, New York", "description": ""}, {"event_name": "Coldwell Banker West Memphis AR", "event_date_display": "01/21/2026", "event_month": "January", "weekday": "Wednesday", "time": "10:30am - 11:30am", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Memphis, Tennessee", "description": ""}, {"event_name": "Greater Capital Association (DC MD)", "event_date_display": "01/21/2026", "event_month": "January", "weekday": "Wednesday", "time": "11:00am - 12:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Rockville, Maryland", "description": ""}, {"event_name": "Sierra Nevada Association", "event_date_display": "01/21/2026", "event_month": "January", "weekday": "Wednesday", "time": "12:00pm - 1:00pm", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location_display": "Reno, Nevada", "description": ""}, {"event_name": "Traveler's Insurance Institute", "event_date_display": "01/21/2026", "event_month": "January", "weekday": "Wednesday", "time": "1:00pm - 2:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Hartford, Connecticut", "description": ""}, {"event_name": "Greenwich CT Realtors Global Council", "event_date_display": "01/23/2026", "event_month": "January", "weekday": "Friday", "time": "9:30am - 10:00am", "time_zone": "Eastern Time", "speaker": "Matt Christopherson", "location_display": "Greenwich, Connecticut", "description": ""}, {"event_name": "NAR NXT Evaluation Review, Meetings & Events Committee", "event_date_display": "01/26/2026", "event_month": "January", "weekday": "Monday", "time": "12:00pm - 1:00pm", "time_zone": "Central Time", "speaker": "Lisa Herceg, Jesse Priddy", "location_display": "Chicago, Illinois", "description": ""}, {"event_name": "NAR Broker Series", "event_date_display": "01/28/2026", "event_month": "January", "weekday": "Wednesday", "time": "1:00pm - 2:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Chicago, Illinois", "description": ""}, {"event_name": "Northwest Wisconsin Association", "event_date_display": "01/28/2026", "event_month": "January", "weekday": "Wednesday", "time": "12:00pm - 1:00pm", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location_display": "Eau Claire, Wisconsin", "description": ""}, {"event_name": "ReMax Charlotte", "event_date_display": "01/28/2026", "event_month": "January", "weekday": "Wednesday", "time": "9:00am - 10:00am", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Charlotte, North Carolina", "description": ""}, {"event_name": "Vermont REALTORS®", "event_date_display": "01/28/2026", "event_month": "January", "weekday": "Wednesday", "time": "9:00am - 10:00am", "time_zone": "Eastern Time", "speaker": "Nadia Evangelou", "location_display": "Montpelier, Vermont", "description": ""}, {"event_name": "Bennion Deville Homes broker CA", "event_date_display": "01/29/2026", "event_month": "January", "weekday": "Thursday", "time": "3:00pm - 5:00pm", "time_zone": "Pacific Time", "speaker": "Lawrence Yun", "location_display": "Palm Springs, California", "description": ""}, {"event_name": "Maryland Association", "event_date_display": "01/29/2026", "event_month": "January", "weekday": "Thursday", "time": "1:00pm - 2:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Annapolis, Maryland", "description": ""}, {"event_name": "OHC Community Conference", "event_date_display": "01/29/2026", "event_month": "January", "weekday": "Thursday", "time": "2:00pm - 3:00pm", "time_zone": "Eastern Time", "speaker": "Brandi Snowden", "location_display": "Washington, DC", "description": ""}, {"event_name": "Minnesota Association", "event_date_display": "01/30/2026", "event_month": "January", "weekday": "Friday", "time": "11:00am - 12:00pm", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location_display": "Minnetonka, Minnesota", "description": ""}, {"event_name": "National Association for Business Economics", "event_date_display": "01/30/2026", "event_month": "January", "weekday": "Friday", "time": "11:00am - 12:00pm", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location_display": "Washington, DC", "description": ""}, {"event_name": "Guest on Meet the Moment Podcast", "event_date_display": "02/03/2026", "event_month": "February", "weekday": "Tuesday", "time": "11:00am - 12:00pm", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location_display": "Chicago, Illinois", "description": ""}, {"event_name": "Chapman University RE students", "event_date_display": "02/04/2026", "event_month": "February", "weekday": "Wednesday", "time": "2:30pm - 3:30pm", "time_zone": "Pacific Time", "speaker": "Lawrence Yun", "location_display": "Orange, California", "description": ""}, {"event_name": "FPC-Training", "event_date_display": "02/04/2026", "event_month": "February", "weekday": "Wednesday", "time": "2:00pm - 3:30pm", "time_zone": "Eastern Time", "speaker": "Nadia Evangelou", "location_display": "Washington, DC", "description": ""}, {"event_name": "Coldwell Banker Advantage-Virtual", "event_date_display": "02/10/2026", "event_month": "February", "weekday": "Tuesday", "time": "", "time_zone": "Eastern Time", "speaker": "Nadia Evangelou", "location_display": "Raleigh, North Carolina", "description": ""}, {"event_name": "NY State Association", "event_date_display": "02/10/2026", "event_month": "February", "weekday": "Tuesday", "time": "2:00pm - 3:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Albany, New York", "description": ""}, {"event_name": "Fair and Attainable Housing Ideas Forum", "event_date_display": "02/11/2026", "event_month": "February", "weekday": "Wednesday", "time": "2:00pm - 3:00pm", "time_zone": "Eastern Time", "speaker": "Nadia Evangelou", "location_display": "Washington, DC", "description": ""}, {"event_name": "Market Moves (appraisal industry) Podcast", "event_date_display": "02/12/2026", "event_month": "February", "weekday": "Thursday", "time": "11:00am - 12:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "New York City, NY", "description": ""}, {"event_name": "AREAA", "event_date_display": "02/17/2026", "event_month": "February", "weekday": "Tuesday", "time": "2:00pm - 3:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "San Diego, California", "description": ""}, {"event_name": "Kalamazoo", "event_date_display": "02/19/2026", "event_month": "February", "weekday": "Thursday", "time": "9:30am - 10:00am", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Kalamazoo, Michigan", "description": ""}, {"event_name": "members of PLACE coaching", "event_date_display": "02/20/2026", "event_month": "February", "weekday": "Friday", "time": "11:00am - 12:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Minneapolis, Minnesota", "description": ""}, {"event_name": "AREAA Northern NJ/NY", "event_date_display": "03/02/2026", "event_month": "March", "weekday": "Monday", "time": "1:00pm - 2:00pm", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location_display": "Jersey City, New Jersey", "description": ""}, {"event_name": "KC Mortgage Group", "event_date_display": "03/04/2026", "event_month": "March", "weekday": "Wednesday", "time": "11:00am - 12:00pm", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location_display": "Kansas City, Kansas", "description": ""}, {"event_name": "Region 5 (pre recorded video)", "event_date_display": "03/05/2026", "event_month": "March", "weekday": "Thursday", "time": "", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location_display": "Montgomery, Alabama", "description": ""}, {"event_name": "Jacksonville NC", "event_date_display": "03/10/2026", "event_month": "March", "weekday": "Tuesday", "time": "10:00am - 10:30am", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Jacksonville, North Carolina", "description": ""}, {"event_name": "EXP Realty", "event_date_display": "03/11/2026", "event_month": "March", "weekday": "Wednesday", "time": "3:00pm - 4:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Washington, DC", "description": ""}, {"event_name": "Dallas MetroTex", "event_date_display": "03/12/2026", "event_month": "March", "weekday": "Thursday", "time": "12:00pm - 1:00pm", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location_display": "Dallas, Texas", "description": ""}, {"event_name": "Dulles Association", "event_date_display": "03/12/2026", "event_month": "March", "weekday": "Thursday", "time": "9:00am - 10:00am", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Dulles, Virginia", "description": ""}, {"event_name": "BHHS Home Service", "event_date_display": "03/13/2026", "event_month": "March", "weekday": "Friday", "time": "12:00pm - 1:00pm", "time_zone": "Central Time", "speaker": "Lawrence Yun", "location_display": "Irvine, California", "description": ""}, {"event_name": "Maine Association", "event_date_display": "03/17/2026", "event_month": "March", "weekday": "Tuesday", "time": "12:00pm - 1:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Augusta, Maine", "description": ""}, {"event_name": "Hawaii Association of Realtors", "event_date_display": "03/18/2026", "event_month": "March", "weekday": "Wednesday", "time": "11:30am - 12:00pm", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location_display": "Honolulu, Hawaii", "description": ""}, {"event_name": "Sotheby's--Oppler", "event_date_display": "03/18/2026", "event_month": "March", "weekday": "Wednesday", "time": "11:00am - 12:00pm", "time_zone": "Eastern Time", "speaker": "Jessica Lautz", "location_display": "Franklin Lakes, New Jersey", "description": ""}, {"event_name": "Guaranteed Rate Mortgage", "event_date_display": "03/20/2026", "event_month": "March", "weekday": "Friday", "time": "2:00pm - 3:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Chicago, Illinois", "description": ""}, {"event_name": "Corcoran Group", "event_date_display": "03/26/2026", "event_month": "March", "weekday": "Thursday", "time": "3:00pm - 4:00pm", "time_zone": "Eastern Time", "speaker": "Lawrence Yun", "location_display": "Brooklyn, New York", "description": ""}];
+events.forEach((d, i) => d._tooltipId = `${d.event_name}__${i}`);
+let speakerQuery = "";
+
+function speakerMatches(name) {
+  if (!speakerQuery) return true;
+  return (name || "").toLowerCase().includes(speakerQuery);
+}
+const width = 1080;
+const height = 760;
+
+const svg = d3.select("#chart").append("svg")
+  .attr("viewBox", [0, 0, width, height]);
+
+const mapRoot = svg.append("g").attr("class", "map-root");
+
+const virtualSvg = d3.select("#virtualChart").append("svg")
+  .attr("viewBox", [0, 0, width, height]);
+
+const virtualMapRoot = virtualSvg.append("g").attr("class", "map-root");
+
+const tooltip = d3.select("#tooltip");
+const summary = d3.select("#summary");
+const eventCount = d3.select("#eventCount");
+const controls = d3.select("#controls");
+
+months.forEach((month, i) => {
+  controls.append("button")
+    .attr("class", "filter-btn" + (i === 0 ? " active" : ""))
+    .attr("data-month", month)
+    .text(month)
+    .on("click", () => setActiveMonth(month));
+});
+
+function hashString(str) {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+function mulberry32(a) {
+  return function() {
+    let t = a += 0x6D2B79F5;
+    t = Math.imul(t ^ t >>> 15, t | 1);
+    t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  }
+}
+
+const stateNameById = {
+  "01":"Alabama","02":"Alaska","04":"Arizona","05":"Arkansas","06":"California","08":"Colorado","09":"Connecticut","10":"Delaware","11":"District of Columbia",
+  "12":"Florida","13":"Georgia","15":"Hawaii","16":"Idaho","17":"Illinois","18":"Indiana","19":"Iowa","20":"Kansas","21":"Kentucky","22":"Louisiana","23":"Maine",
+  "24":"Maryland","25":"Massachusetts","26":"Michigan","27":"Minnesota","28":"Mississippi","29":"Missouri","30":"Montana","31":"Nebraska","32":"Nevada","33":"New Hampshire",
+  "34":"New Jersey","35":"New Mexico","36":"New York","37":"North Carolina","38":"North Dakota","39":"Ohio","40":"Oklahoma","41":"Oregon","42":"Pennsylvania","44":"Rhode Island",
+  "45":"South Carolina","46":"South Dakota","47":"Tennessee","48":"Texas","49":"Utah","50":"Vermont","51":"Virginia","53":"Washington","54":"West Virginia","55":"Wisconsin","56":"Wyoming"
+};
+
+
+const stateAbbrByName = {"Alabama": "AL", "Alaska": "AK", "Arizona": "AZ", "Arkansas": "AR", "California": "CA", "Colorado": "CO", "Connecticut": "CT", "Delaware": "DE", "District of Columbia": "DC", "Florida": "FL", "Georgia": "GA", "Hawaii": "HI", "Idaho": "ID", "Illinois": "IL", "Indiana": "IN", "Iowa": "IA", "Kansas": "KS", "Kentucky": "KY", "Louisiana": "LA", "Maine": "ME", "Maryland": "MD", "Massachusetts": "MA", "Michigan": "MI", "Minnesota": "MN", "Mississippi": "MS", "Missouri": "MO", "Montana": "MT", "Nebraska": "NE", "Nevada": "NV", "New Hampshire": "NH", "New Jersey": "NJ", "New Mexico": "NM", "New York": "NY", "North Carolina": "NC", "North Dakota": "ND", "Ohio": "OH", "Oklahoma": "OK", "Oregon": "OR", "Pennsylvania": "PA", "Rhode Island": "RI", "South Carolina": "SC", "South Dakota": "SD", "Tennessee": "TN", "Texas": "TX", "Utah": "UT", "Vermont": "VT", "Virginia": "VA", "Washington": "WA", "West Virginia": "WV", "Wisconsin": "WI", "Wyoming": "WY"};
+
+function deriveLocationParts(location) {
+  const raw = String(location || "").trim();
+  if (!raw) return { location_clean: "", city: "", state_name: "", state_abbr: "", is_mappable: false };
+  const parts = raw.split(",").map(s => s.trim()).filter(Boolean);
+  if (parts.length >= 2) {
+    let stateName = parts[parts.length - 1];
+    if (stateName === "DC") stateName = "District of Columbia";
+    const city = parts.slice(0, -1).join(", ");
+    return {
+      location_clean: raw,
+      city,
+      state_name: stateName,
+      state_abbr: stateAbbrByName[stateName] || "",
+      is_mappable: !!stateAbbrByName[stateName] || stateName === "District of Columbia"
+    };
+  }
+  return { location_clean: raw, city: "", state_name: "", state_abbr: "", is_mappable: false };
+}
+
+const virtualMapEvents = virtualEvents.map((d, i) => {
+  const loc = deriveLocationParts(d.location_display);
+  return {
+    ...d,
+    ...loc,
+    event_type: "Virtual",
+    location: d.location_display || "",
+    event_start: (() => {
+      const parts = String(d.event_date_display || "").split("/");
+      if (parts.length === 3) return `${parts[2]}-${parts[0].padStart(2,"0")}-${parts[1].padStart(2,"0")}`;
+      return "";
+    })(),
+    _tooltipId: `virtual__${d.event_name}__${i}`
+  };
+});
+
+const compactStates = new Set(["CT","DE","DC","MA","MD","NH","NJ","RI","VT"]);
+const mediumStates = new Set(["AL","GA","IN","KY","MS","NC","OH","PA","SC","TN","VA","WV"]);
+const usUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
+
+let pinSelection;
+let virtualPinSelection;
+let currentMonth = "All Events";
+let updateVirtualMap = () => {};
+let lockedEventId = null;
+let lockedPinNode = null;
+
+function showTooltip(event, d) {
+  const dateText = d.event_date_display || "—";
+  const timezoneText = d.time_zone ? `<span class="badge secondary">${d.time_zone}</span>` : "—";
+  const speakerText = d.speaker || "—";
+  const placeText = d.location_clean || d.location || d.location_display || "—";
+  const attendanceLabel = d.event_type === "Virtual" ? "Format:" : "Attendance:";
+  const attendanceText = `<span class="badge outline-red">${d.event_type === "Virtual" ? "Virtual" : "Speaking"}</span>`;
+
+  tooltip
+    .html(`
+      <div class="name">${d.event_name}</div>
+      <div class="date-line">${dateText}</div>
+      <div class="row"><span class="label">Time Zone:</span> <span class="value">${timezoneText}</span></div>
+      <div class="row"><span class="label">Who:</span> <span class="value">${speakerText}</span></div>
+      <div class="row"><span class="label">Where:</span> <span class="value">${placeText}</span></div>
+      <div class="row"><span class="label">${attendanceLabel}</span> <span class="value">${attendanceText}</span></div>
+      <div class="close-hint">${lockedEventId === d._tooltipId ? "Click the pin again or click the map to close" : "Click the pin to keep this open"}</div>
+    `)
+    .classed("visible", true);
+
+  const rect = event.currentTarget.getBoundingClientRect();
+  const isMobile = window.innerWidth <= 640;
+  const gap = 16;
+
+  const tooltipWidth = Math.min(360, window.innerWidth * 0.9);
+  const tooltipHeight = 240;
+
+  if (isMobile) {
+    const left = Math.max(16, Math.min((window.innerWidth - tooltipWidth) / 2, window.innerWidth - tooltipWidth - 16));
+    let top = rect.bottom + 14;
+    if (top + tooltipHeight > window.innerHeight - 12) {
+      top = Math.max(100, rect.top - tooltipHeight - 14);
+    }
+    tooltip
+      .classed("side-right", false)
+      .classed("side-left", false)
+      .style("left", `${left}px`)
+      .style("top", `${top}px`)
+      .style("--arrow-top", `24px`);
+    return;
+  }
+
+  let left = rect.left + rect.width / 2 - tooltipWidth / 2;
+  let top = rect.top - tooltipHeight - gap;
+  let placeAbove = true;
+
+  if (top < 12) {
+    top = rect.bottom + gap;
+    placeAbove = false;
+  }
+
+  if (left < 12) left = 12;
+  if (left + tooltipWidth > window.innerWidth - 12) {
+    left = window.innerWidth - tooltipWidth - 12;
+  }
+
+  if (top + tooltipHeight > window.innerHeight - 12) {
+    top = window.innerHeight - tooltipHeight - 12;
+  }
+
+  const arrowTop = placeAbove
+    ? Math.max(18, Math.min(rect.top - top + rect.height / 2, tooltipHeight - 34))
+    : Math.max(18, Math.min(rect.bottom - top - rect.height / 2, tooltipHeight - 34));
+
+  tooltip
+    .classed("side-right", false)
+    .classed("side-left", false)
+    .style("left", `${left}px`)
+    .style("top", `${top}px`)
+    .style("--arrow-top", `${arrowTop}px`);
+}
+
+function hideTooltip(force = false) {
+  if (lockedEventId && !force) return;
+  tooltip.classed("visible", false).classed("side-right", false).classed("side-left", false);
+}
+
+function updateCounts(month) {
+  const count = events.filter(d => {
+    const monthOk = month === "All Events" || d.event_month === month;
+    const speakerOk = speakerMatches(d.speaker);
+    return monthOk && speakerOk;
+  }).length;
+
+  summary.text(month === "All Events"
+    ? (speakerQuery ? "Showing filtered in-person events" : "Showing all in-person events")
+    : `Showing ${month} events`);
+  eventCount.text(`${count} event${count === 1 ? "" : "s"}`);
+
+  document.getElementById("mapEmpty").classList.toggle("is-hidden", count !== 0);
+  document.getElementById("chart").classList.toggle("is-hidden", count === 0);
+
+  renderInpersonTableFiltered(month);
+}
+
+function setActiveMonth(month) {
+  d3.selectAll(".filter-btn").classed("active", function() {
+    return d3.select(this).attr("data-month") === month;
+  });
+
+  pinSelection.classed("is-hidden", d => !((month === "All Events" || d.event_month === month) && speakerMatches(d.speaker)));
+
+  updateCounts(month);
+  lockedEventId = null;
+  lockedPinNode = null;
+  pinSelection.classed("is-active", false)
+    .interrupt()
+    .transition()
+    .duration(140)
+    .attr("transform", d => `translate(${d.x},${d.y}) scale(1)`);
+  hideTooltip(true);
+}
+
+
+
+let virtualMonth = "All Events";
+
+
+function updateVirtualCounts() {
+  const count = virtualMapEvents.filter(d => (virtualMonth === "All Events" || d.event_month === virtualMonth) && speakerMatches(d.speaker)).length;
+  virtualSummary.textContent = virtualMonth === "All Events"
+    ? (speakerQuery ? "Showing filtered virtual events" : "Showing all virtual events")
+    : `Showing ${virtualMonth} events`;
+  virtualEventCount.textContent = `${count} event${count === 1 ? "" : "s"}`;
+}
+function renderVirtualTableFiltered() {
+  const filtered = sortByEventDate(virtualEvents.filter(d => {
+    const monthOk = virtualMonth === "All Events" || d.event_month === virtualMonth;
+    const speakerOk = speakerMatches(d.speaker);
+    return monthOk && speakerOk;
+  }));
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / getPageSize()));
+  if (virtualPage > totalPages) virtualPage = totalPages;
+  const start = (virtualPage - 1) * getPageSize();
+  const pageRows = filtered.slice(start, start + getPageSize());
+
+  const rows = pageRows.map(d => {
+    const timeText = d.time ? d.time : "—";
+    const tzText = d.time_zone ? `<span class="virtual-pill">${d.time_zone}</span>` : "—";
+    const descHtml = d.description ? `<div class="event-desc">${d.description.replace(/Questions:/g, "<br><br>Questions:")}</div>` : "";
+    return `
+      <tr class="virtual-row">
+        <td data-label="Date">${d.event_date_display || "—"}</td>
+        <td class="event-cell" data-label="Event">
+          <div class="event-title">${d.event_name || ""}</div>
+          ${descHtml}
+        </td>
+        <td data-label="Time Zone">${tzText}</td>
+        <td class="time-cell" data-label="Time">${timeText.replace(" - ", " – ")}</td>
+        <td data-label="Speaker">${d.speaker || "—"}</td>
+        <td data-label="Where"><span class="virtual-where">${d.location_display || "Virtual"}</span></td>
+      </tr>
+    `;
+  }).join("");
+
+  virtualTableBody.innerHTML = rows;
+  virtualCount.textContent = `${filtered.length} virtual event${filtered.length === 1 ? "" : "s"}`;
+  updateVirtualCounts();
+  virtualPageStatus.textContent = `Page ${virtualPage} of ${totalPages}`;
+  virtualNextBtn.disabled = totalPages <= 1;
+  document.getElementById("virtualEmpty").classList.toggle("is-hidden", filtered.length !== 0);
+  document.querySelector(".virtual-table-wrap").classList.toggle("is-hidden", filtered.length === 0);
+}
+
+
+function renderInpersonTableFiltered(month) {
+  const filtered = sortByEventDate(events.filter(d => {
+    const monthOk = month === "All Events" || d.event_month === month;
+    const speakerOk = speakerMatches(d.speaker);
+    return monthOk && speakerOk;
+  }));
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / getPageSize()));
+  if (inpersonPage > totalPages) inpersonPage = totalPages;
+  const start = (inpersonPage - 1) * getPageSize();
+  const pageRows = filtered.slice(start, start + getPageSize());
+
+  const rows = pageRows.map(d => {
+    const timeText = d.time ? d.time : "—";
+    const tzText = d.time_zone ? `<span class="inperson-pill">${d.time_zone}</span>` : "—";
+    const whereText = d.location_clean || d.location || "—";
+    return `
+      <tr class="inperson-row">
+        <td data-label="Date">${d.event_date_display || "—"}</td>
+        <td class="event-cell" data-label="Event">
+          <div class="event-title">${d.event_name || ""}</div>
+        </td>
+        <td data-label="Time Zone">${tzText}</td>
+        <td class="time-cell" data-label="Time">${timeText.replace(" - ", " – ")}</td>
+        <td data-label="Speaker">${d.speaker || "—"}</td>
+        <td data-label="Where"><span class="inperson-where">${whereText}</span></td>
+      </tr>
+    `;
+  }).join("");
+
+  inpersonTableBody.innerHTML = rows;
+  inpersonTableCount.textContent = `${filtered.length} in-person event${filtered.length === 1 ? "" : "s"}`;
+  inpersonPageStatus.textContent = `Page ${inpersonPage} of ${totalPages}`;
+  inpersonNextBtn.disabled = totalPages <= 1;
+  inpersonEmpty.classList.toggle("is-hidden", filtered.length !== 0);
+  inpersonTableWrap.classList.toggle("is-hidden", filtered.length === 0);
+}
+
+function renderVirtualFilters() {
+  const container = document.querySelector(".virtual-controls");
+  container.querySelectorAll(".filter-btn")?.forEach(el => el.remove());
+
+  months.forEach(m => {
+    const btn = document.createElement("button");
+    btn.className = "filter-btn" + (m === "All Events" ? " active" : "");
+    btn.dataset.month = m;
+    btn.textContent = m;
+    btn.onclick = () => {
+      virtualMonth = m;
+      virtualPage = 1;
+      container.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderVirtualTableFiltered();
+      updateVirtualMap();
+    };
+    container.appendChild(btn);
+  });
+}
+
+const chartView = document.getElementById("chartView");
+const speakerSearch = document.getElementById("speakerSearch");
+const searchClear = document.getElementById("searchClear");
+const searchNote = document.getElementById("searchNote");
+const zoomInBtn = document.getElementById("zoomInBtn");
+const zoomOutBtn = document.getElementById("zoomOutBtn");
+const zoomResetBtn = document.getElementById("zoomResetBtn");
+const virtualZoomInBtn = document.getElementById("virtualZoomInBtn");
+const virtualZoomOutBtn = document.getElementById("virtualZoomOutBtn");
+const virtualZoomResetBtn = document.getElementById("virtualZoomResetBtn");
+const virtualMapEmpty = document.getElementById("virtualMapEmpty");
+const inpersonTableBody = document.getElementById("inpersonTableBody");
+const inpersonTableCount = document.getElementById("inpersonTableCount");
+const inpersonTableWrap = document.getElementById("inpersonTableWrap");
+const inpersonEmpty = document.getElementById("inpersonEmpty");
+const inpersonPageStatus = document.getElementById("inpersonPageStatus");
+const inpersonNextBtn = document.getElementById("inpersonNextBtn");
+const inpersonPrevBtn = document.getElementById("inpersonPrevBtn");
+const virtualView = document.getElementById("virtualView");
+const virtualTableBody = document.getElementById("virtualTableBody");
+const virtualCount = document.getElementById("virtualCount");
+const virtualPageStatus = document.getElementById("virtualPageStatus");
+const virtualNextBtn = document.getElementById("virtualNextBtn");
+const virtualPrevBtn = document.getElementById("virtualPrevBtn");
+const virtualSummary = document.getElementById("virtualSummary");
+const virtualEventCount = document.getElementById("virtualEventCount");
+
+let activeView = "inperson";
+
+function parseDisplayDateToTime(value) {
+  if (!value) return Number.MAX_SAFE_INTEGER;
+  const parts = String(value).split(/[\/\-–]/).map(s => s.trim()).filter(Boolean);
+  if (parts.length >= 3) {
+    const [mm, dd, yyyy] = parts;
+    const d = new Date(`${yyyy}-${mm.padStart(2,"0")}-${dd.padStart(2,"0")}`);
+    return isNaN(d.getTime()) ? Number.MAX_SAFE_INTEGER : d.getTime();
+  }
+  const d = new Date(value);
+  return isNaN(d.getTime()) ? Number.MAX_SAFE_INTEGER : d.getTime();
+}
+
+function sortByEventDate(list) {
+  return [...list].sort((a, b) => {
+    const aTime = a.event_date ? new Date(a.event_date).getTime() : parseDisplayDateToTime(a.event_date_display);
+    const bTime = b.event_date ? new Date(b.event_date).getTime() : parseDisplayDateToTime(b.event_date_display);
+    if (aTime !== bTime) return aTime - bTime;
+    return String(a.event_name || "").localeCompare(String(b.event_name || ""));
+  });
+}
+let inpersonPage = 1;
+let virtualPage = 1;
+
+function getPageSize() {
+  return window.innerWidth > 900 ? 5 : 3;
+}
+
+
+
+function setView(view) {
+  activeView = view;
+  const isInPerson = view === "inperson";
+  chartView.classList.toggle("is-hidden", !isInPerson);
+  virtualView.classList.toggle("is-hidden", isInPerson);
+  document.querySelector(".controls").classList.toggle("is-hidden", !isInPerson);
+  document.querySelector(".meta-row").classList.toggle("is-hidden", !isInPerson);
+
+  document.querySelectorAll(".view-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.view === view);
+  });
+
+  if (!isInPerson) {
+    lockedEventId = null;
+    lockedPinNode = null;
+    if (typeof pinSelection !== "undefined" && pinSelection) {
+      pinSelection.classed("is-active", false)
+        .interrupt()
+        .transition()
+        .duration(140)
+        .attr("transform", d => `translate(${d.x},${d.y}) scale(1)`);
+    }
+    if (typeof virtualPinSelection !== "undefined" && virtualPinSelection) {
+      virtualPinSelection.classed("is-active", false)
+        .interrupt()
+        .transition()
+        .duration(140)
+        .attr("transform", d => `translate(${d.x},${d.y}) scale(1)`);
+    }
+    updateVirtualMap();
+    hideTooltip(true);
+  }
+}
+
+document.getElementById("viewToggle").querySelectorAll(".view-btn").forEach(btn => {
+  btn.addEventListener("click", () => setView(btn.dataset.view));
+});
+
+
+const searchSuggestions = document.getElementById("searchSuggestions");
+
+function getUniqueSpeakers() {
+  const names = [...new Set([...events, ...virtualEvents].map(d => d.speaker).filter(Boolean))];
+  return names.sort((a, b) => a.localeCompare(b));
+}
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function highlightMatch(text, query) {
+  if (!query) return text;
+  const pattern = new RegExp(`(${escapeRegExp(query)})`, "ig");
+  return text.replace(pattern, "<mark>$1</mark>");
+}
+
+const speakerList = getUniqueSpeakers();
+
+function renderSpeakerSuggestions(query = "") {
+  const normalized = query.trim().toLowerCase();
+  const matches = speakerList
+    .filter(name => !normalized || name.toLowerCase().includes(normalized));
+
+  if (!matches.length) {
+    searchSuggestions.classList.add("is-hidden");
+    searchSuggestions.innerHTML = "";
+    return;
+  }
+
+  const header = normalized ? "Suggested speakers" : "Browse speakers";
+  searchSuggestions.innerHTML = `
+    <div class="suggestion-header">${header}</div>
+    ${matches.map(name => `<div class="suggestion-item">${highlightMatch(name, normalized)}</div>`).join("")}
+  `;
+  searchSuggestions.classList.remove("is-hidden");
+
+  [...searchSuggestions.querySelectorAll(".suggestion-item")].forEach(el => {
+    el.onclick = () => {
+      speakerSearch.value = el.textContent;
+      searchSuggestions.classList.add("is-hidden");
+      speakerSearch.dispatchEvent(new Event("input"));
+    };
+  });
+}
+
+speakerSearch.addEventListener("focus", () => {
+  renderSpeakerSuggestions(speakerSearch.value);
+});
+
+speakerSearch.addEventListener("click", () => {
+  renderSpeakerSuggestions(speakerSearch.value);
+});
+
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".search-wrap")) {
+    searchSuggestions.classList.add("is-hidden");
+  }
+});
+
+speakerSearch.addEventListener("input", () => {
+  renderSpeakerSuggestions(speakerSearch.value);
+  speakerQuery = speakerSearch.value.trim().toLowerCase();
+  inpersonPage = 1;
+  virtualPage = 1;
+  searchNote.textContent = speakerQuery
+    ? `Filtering by speaker name: "${speakerSearch.value.trim()}".`
+    : "Type a speaker name to filter both the map and the virtual-events table.";
+  setActiveMonth(document.querySelector("#controls .filter-btn.active")?.dataset.month || "All Events");
+  renderVirtualTableFiltered();
+  updateVirtualMap();
+});
+
+searchClear.addEventListener("click", () => {
+  speakerSearch.value = "";
+  speakerQuery = "";
+  inpersonPage = 1;
+  virtualPage = 1;
+  searchNote.textContent = "Type a speaker name to filter both the map and the virtual-events table.";
+  setActiveMonth(document.querySelector("#controls .filter-btn.active")?.dataset.month || "All Events");
+  renderVirtualTableFiltered();
+  renderInpersonTableFiltered(document.querySelector("#controls .filter-btn.active")?.dataset.month || "All Events");
+  updateVirtualMap();
+  renderSpeakerSuggestions("");
+  speakerSearch.focus();
+});
+
+
+
+let lastPageSize = getPageSize();
+window.addEventListener("resize", () => {
+  const currentPageSize = getPageSize();
+  if (currentPageSize !== lastPageSize) {
+    lastPageSize = currentPageSize;
+    const currentMonth = document.querySelector("#controls .filter-btn.active")?.dataset.month || "All Events";
+    renderInpersonTableFiltered(currentMonth);
+    renderVirtualTableFiltered();
+    updateVirtualMap();
+  }
+});
+
+inpersonNextBtn.addEventListener("click", () => {
+  const month = document.querySelector("#controls .filter-btn.active")?.dataset.month || "All Events";
+  const filtered = events.filter(d => (month === "All Events" || d.event_month === month) && speakerMatches(d.speaker));
+  const totalPages = Math.max(1, Math.ceil(filtered.length / getPageSize()));
+  inpersonPage = inpersonPage >= totalPages ? 1 : inpersonPage + 1;
+  renderInpersonTableFiltered(month);
+});
+
+
+inpersonPrevBtn.addEventListener("click", () => {
+  const month = document.querySelector("#controls .filter-btn.active")?.dataset.month || "All Events";
+  const filtered = events.filter(d => (month === "All Events" || d.event_month === month) && speakerMatches(d.speaker));
+  const totalPages = Math.max(1, Math.ceil(filtered.length / getPageSize()));
+  inpersonPage = inpersonPage <= 1 ? totalPages : inpersonPage - 1;
+  renderInpersonTableFiltered(month);
+});
+
+virtualPrevBtn.addEventListener("click", () => {
+  const filtered = virtualEvents.filter(d => (virtualMonth === "All Events" || d.event_month === virtualMonth) && speakerMatches(d.speaker));
+  const totalPages = Math.max(1, Math.ceil(filtered.length / getPageSize()));
+  virtualPage = virtualPage <= 1 ? totalPages : virtualPage - 1;
+  renderVirtualTableFiltered();
+});
+
+virtualNextBtn.addEventListener("click", () => {
+  const filtered = virtualEvents.filter(d => (virtualMonth === "All Events" || d.event_month === virtualMonth) && speakerMatches(d.speaker));
+  const totalPages = Math.max(1, Math.ceil(filtered.length / getPageSize()));
+  virtualPage = virtualPage >= totalPages ? 1 : virtualPage + 1;
+  renderVirtualTableFiltered();
+});
+
+renderVirtualFilters();
+renderVirtualTableFiltered();
+updateVirtualMap();
+
+
+
+
+const zoomBehavior = d3.zoom()
+  .scaleExtent([1, 6])
+  .translateExtent([[0, 0], [width, height]])
+  .extent([[0, 0], [width, height]])
+  .on("zoom", (event) => {
+    mapRoot.attr("transform", event.transform);
+  });
+
+svg.call(zoomBehavior).on("dblclick.zoom", null);
+
+zoomInBtn.addEventListener("click", () => {
+  svg.transition().duration(240).call(zoomBehavior.scaleBy, 1.25);
+});
+
+zoomOutBtn.addEventListener("click", () => {
+  svg.transition().duration(240).call(zoomBehavior.scaleBy, 0.8);
+});
+
+zoomResetBtn.addEventListener("click", () => {
+  svg.transition().duration(260).call(zoomBehavior.transform, d3.zoomIdentity);
+});
+
+const virtualZoomBehavior = d3.zoom()
+  .scaleExtent([1, 6])
+  .translateExtent([[0, 0], [width, height]])
+  .extent([[0, 0], [width, height]])
+  .on("zoom", (event) => {
+    virtualMapRoot.attr("transform", event.transform);
+  });
+
+virtualSvg.call(virtualZoomBehavior).on("dblclick.zoom", null);
+
+virtualZoomInBtn.addEventListener("click", () => {
+  virtualSvg.transition().duration(240).call(virtualZoomBehavior.scaleBy, 1.25);
+});
+
+virtualZoomOutBtn.addEventListener("click", () => {
+  virtualSvg.transition().duration(240).call(virtualZoomBehavior.scaleBy, 0.8);
+});
+
+virtualZoomResetBtn.addEventListener("click", () => {
+  virtualSvg.transition().duration(260).call(virtualZoomBehavior.transform, d3.zoomIdentity);
+});
+d3.json(usUrl).then(us => {
+  const states = topojson.feature(us, us.objects.states);
+  const projection = d3.geoAlbersUsa().fitExtent([[28, 18], [width - 28, height - 130]], states);
+  const path = d3.geoPath(projection);
+
+  const centroids = new Map(
+    states.features.map(f => [stateNameById[String(f.id).padStart(2, "0")], path.centroid(f)])
+  );
+
+  const stateCount = d3.rollup(events, v => v.length, d => d.state_name);
+
+  const defs = svg.append("defs");
+
+  const shadow = defs.append("filter")
+    .attr("id", "pinShadow")
+    .attr("x", "-50%").attr("y", "-50%")
+    .attr("width", "200%").attr("height", "200%");
+  shadow.append("feDropShadow")
+    .attr("dx", 0)
+    .attr("dy", 2.2)
+    .attr("stdDeviation", 1.9)
+    .attr("flood-color", "rgba(16,23,70,0.28)");
+
+  const marker = defs.append("g").attr("id", "pinSymbol");
+  marker.append("path")
+    .attr("d", "M0,-11.2 C6.3,-11.2 10.8,-6.9 10.8,-1.9 C10.8,3.1 7.1,7.8 0,15.2 C-7.1,7.8 -10.8,3.1 -10.8,-1.9 C-10.8,-6.9 -6.3,-11.2 0,-11.2 Z")
+    .attr("fill", "var(--pin)");
+  marker.append("circle")
+    .attr("r", 4.15)
+    .attr("cy", -2.3)
+    .attr("fill", "#fff");
+  marker.append("circle")
+    .attr("r", 1.75)
+    .attr("cy", -2.3)
+    .attr("fill", "var(--pin)");
+  marker.append("ellipse")
+    .attr("rx", 2.35)
+    .attr("ry", 1.15)
+    .attr("cx", -1.55)
+    .attr("cy", -5.8)
+    .attr("fill", "rgba(255,255,255,0.18)");
+
+  const mapG = mapRoot.append("g").attr("class", "map-shadow");
+
+  mapG.append("g")
+    .selectAll("path")
+    .data(states.features)
+    .join("path")
+    .attr("class", "state")
+    .attr("d", path)
+    .attr("fill", "var(--state-fill)")
+    .attr("stroke", "var(--state-stroke)")
+    .attr("stroke-width", 1.1);
+
+  const pinned = events.map((d) => {
+    const base = centroids.get(d.state_name);
+    if (!base) return null;
+
+    const seed = hashString([d.state_name, d.city, d.event_name, d.event_start].join("|"));
+    const rng = mulberry32(seed);
+    const count = stateCount.get(d.state_name) || 1;
+
+    let spread = 11;
+    if (compactStates.has(d.state_abbr)) spread = 6;
+    else if (mediumStates.has(d.state_abbr)) spread = 8;
+    else if (["TX","CA","MT","NM","AZ","NV","CO","OR","WA","FL"].includes(d.state_abbr)) spread = 14;
+
+    const angle = rng() * Math.PI * 2;
+    const radius = Math.sqrt(rng()) * spread * (count > 4 ? 1.22 : 1);
+    const offsetX = Math.cos(angle) * radius + (rng() - 0.5) * 2.5;
+    const offsetY = Math.sin(angle) * radius + (rng() - 0.5) * 2.5;
+
+    return {
+      ...d,
+      x: base[0] + offsetX,
+      y: base[1] + offsetY
+    };
+  }).filter(Boolean);
+
+  pinSelection = mapG.append("g")
+    .selectAll("g.pin")
+    .data(pinned)
+    .join("g")
+    .attr("class", "pin")
+    .attr("transform", d => `translate(${d.x},${d.y})`)
+    .on("mousemove", function(event, d) {
+      if (lockedEventId === d._tooltipId) return;
+      showTooltip(event, d);
+    })
+    .on("mouseenter", function(event, d) {
+      d3.select(this)
+        .raise()
+        .interrupt()
+        .transition()
+        .duration(140)
+        .attr("transform", `translate(${d.x},${d.y}) scale(${lockedEventId === d._tooltipId ? 1.14 : 1.12})`);
+      if (lockedEventId !== d._tooltipId) showTooltip(event, d);
+    })
+    .on("mouseleave", function(event, d) {
+      if (lockedEventId !== d._tooltipId) {
+        d3.select(this)
+          .interrupt()
+          .transition()
+          .duration(140)
+          .attr("transform", `translate(${d.x},${d.y}) scale(1)`);
+        hideTooltip();
+      } else {
+        d3.select(this)
+          .interrupt()
+          .transition()
+          .duration(140)
+          .attr("transform", `translate(${d.x},${d.y}) scale(1.14)`);
+      }
+    })
+    .on("click", function(event, d) {
+      event.stopPropagation();
+      const isSame = lockedEventId === d._tooltipId;
+
+      if (isSame) {
+        lockedEventId = null;
+        lockedPinNode = null;
+        pinSelection.classed("is-active", false)
+          .interrupt()
+          .transition()
+          .duration(140)
+          .attr("transform", p => `translate(${p.x},${p.y}) scale(1)`);
+        hideTooltip(true);
+        return;
+      }
+
+      lockedEventId = d._tooltipId;
+      lockedPinNode = this;
+
+      pinSelection.classed("is-active", p => p._tooltipId === lockedEventId)
+        .interrupt()
+        .transition()
+        .duration(140)
+        .attr("transform", p => `translate(${p.x},${p.y}) scale(${p._tooltipId === lockedEventId ? 1.14 : 1})`);
+
+      showTooltip(event, d);
+    });
+
+  pinSelection.append("circle")
+    .attr("r", 8.5)
+    .attr("fill", "var(--pin-glow)");
+
+  pinSelection.append("use")
+    .attr("href", "#pinSymbol")
+    .attr("filter", "url(#pinShadow)");
+
+  mapRoot.append("text")
+    .attr("class", "month-chip")
+    .attr("x", 26)
+    .attr("y", height - 92)
+    .text("In-person events only");
+
+
+  const virtualStateCount = d3.rollup(virtualMapEvents.filter(d => d.is_mappable), v => v.length, d => d.state_name);
+
+  const virtualDefs = virtualSvg.append("defs");
+
+  const virtualShadow = virtualDefs.append("filter")
+    .attr("id", "virtualPinShadow")
+    .attr("x", "-50%").attr("y", "-50%")
+    .attr("width", "200%").attr("height", "200%");
+  virtualShadow.append("feDropShadow")
+    .attr("dx", 0)
+    .attr("dy", 2.2)
+    .attr("stdDeviation", 1.9)
+    .attr("flood-color", "rgba(16,23,70,0.28)");
+
+  const virtualMarker = virtualDefs.append("g").attr("id", "virtualPinSymbol");
+  virtualMarker.append("path")
+    .attr("d", "M0,-11.2 C6.3,-11.2 10.8,-6.9 10.8,-1.9 C10.8,3.1 7.1,7.8 0,15.2 C-7.1,7.8 -10.8,3.1 -10.8,-1.9 C-10.8,-6.9 -6.3,-11.2 0,-11.2 Z")
+    .attr("fill", "var(--pin)");
+  virtualMarker.append("circle")
+    .attr("r", 4.15)
+    .attr("cy", -2.3)
+    .attr("fill", "#fff");
+  virtualMarker.append("circle")
+    .attr("r", 1.75)
+    .attr("cy", -2.3)
+    .attr("fill", "var(--pin)");
+  virtualMarker.append("ellipse")
+    .attr("rx", 2.35)
+    .attr("ry", 1.15)
+    .attr("cx", -1.55)
+    .attr("cy", -5.8)
+    .attr("fill", "rgba(255,255,255,0.18)");
+
+  const virtualMapG = virtualMapRoot.append("g").attr("class", "map-shadow");
+
+  virtualMapG.append("g")
+    .selectAll("path")
+    .data(states.features)
+    .join("path")
+    .attr("class", "state")
+    .attr("d", path)
+    .attr("fill", "var(--state-fill)")
+    .attr("stroke", "var(--state-stroke)")
+    .attr("stroke-width", 1.1);
+
+  const virtualPinned = virtualMapEvents.map((d) => {
+    const base = centroids.get(d.state_name);
+    if (!base || !d.is_mappable) return null;
+
+    const seed = hashString([d.state_name, d.city, d.event_name, d.event_start].join("|"));
+    const rng = mulberry32(seed);
+    const count = virtualStateCount.get(d.state_name) || 1;
+
+    let spread = 11;
+    if (compactStates.has(d.state_abbr)) spread = 6;
+    else if (mediumStates.has(d.state_abbr)) spread = 8;
+    else if (["TX","CA","MT","NM","AZ","NV","CO","OR","WA","FL"].includes(d.state_abbr)) spread = 14;
+
+    const angle = rng() * Math.PI * 2;
+    const radius = Math.sqrt(rng()) * spread * (count > 4 ? 1.22 : 1);
+    const offsetX = Math.cos(angle) * radius + (rng() - 0.5) * 2.5;
+    const offsetY = Math.sin(angle) * radius + (rng() - 0.5) * 2.5;
+
+    return {
+      ...d,
+      x: base[0] + offsetX,
+      y: base[1] + offsetY
+    };
+  }).filter(Boolean);
+
+  virtualPinSelection = virtualMapG.append("g")
+    .selectAll("g.pin")
+    .data(virtualPinned)
+    .join("g")
+    .attr("class", "pin")
+    .attr("transform", d => `translate(${d.x},${d.y})`)
+    .on("mousemove", function(event, d) {
+      if (lockedEventId === d._tooltipId) return;
+      showTooltip(event, d);
+    })
+    .on("mouseenter", function(event, d) {
+      d3.select(this)
+        .raise()
+        .interrupt()
+        .transition()
+        .duration(140)
+        .attr("transform", `translate(${d.x},${d.y}) scale(${lockedEventId === d._tooltipId ? 1.14 : 1.12})`);
+      if (lockedEventId !== d._tooltipId) showTooltip(event, d);
+    })
+    .on("mouseleave", function(event, d) {
+      if (lockedEventId !== d._tooltipId) {
+        d3.select(this)
+          .interrupt()
+          .transition()
+          .duration(140)
+          .attr("transform", `translate(${d.x},${d.y}) scale(1)`);
+        hideTooltip();
+      } else {
+        d3.select(this)
+          .interrupt()
+          .transition()
+          .duration(140)
+          .attr("transform", `translate(${d.x},${d.y}) scale(1.14)`);
+      }
+    })
+    .on("click", function(event, d) {
+      event.stopPropagation();
+      const isSame = lockedEventId === d._tooltipId;
+
+      if (isSame) {
+        lockedEventId = null;
+        lockedPinNode = null;
+        virtualPinSelection.classed("is-active", false)
+          .interrupt()
+          .transition()
+          .duration(140)
+          .attr("transform", p => `translate(${p.x},${p.y}) scale(1)`);
+        hideTooltip(true);
+        return;
+      }
+
+      lockedEventId = d._tooltipId;
+      lockedPinNode = this;
+
+      virtualPinSelection.classed("is-active", p => p._tooltipId === lockedEventId)
+        .interrupt()
+        .transition()
+        .duration(140)
+        .attr("transform", p => `translate(${p.x},${p.y}) scale(${p._tooltipId === lockedEventId ? 1.14 : 1})`);
+
+      showTooltip(event, d);
+    });
+
+  virtualPinSelection.append("circle")
+    .attr("r", 8.5)
+    .attr("fill", "var(--pin-glow)");
+
+  virtualPinSelection.append("use")
+    .attr("href", "#virtualPinSymbol")
+    .attr("filter", "url(#virtualPinShadow)");
+
+  virtualMapRoot.append("text")
+    .attr("class", "month-chip")
+    .attr("x", 26)
+    .attr("y", height - 92)
+    .text("Virtual events by location");
+
+  updateVirtualMap = function() {
+    const count = virtualPinned.filter(d => (virtualMonth === "All Events" || d.event_month === virtualMonth) && speakerMatches(d.speaker)).length;
+    virtualPinSelection.classed("is-hidden", d => !((virtualMonth === "All Events" || d.event_month === virtualMonth) && speakerMatches(d.speaker)));
+    virtualMapEmpty.classList.toggle("is-hidden", count !== 0);
+    updateVirtualCounts();
+    document.getElementById("virtualChart").classList.toggle("is-hidden", count === 0);
+    if (lockedEventId && virtualPinSelection.data().every(d => d._tooltipId !== lockedEventId)) {
+      hideTooltip(true);
+      lockedEventId = null;
+      lockedPinNode = null;
+    }
+  };
+
+  updateVirtualMap();
+
+  virtualSvg.on("click", () => {
+    lockedEventId = null;
+    lockedPinNode = null;
+    virtualPinSelection.classed("is-active", false)
+      .interrupt()
+      .transition()
+      .duration(140)
+      .attr("transform", d => `translate(${d.x},${d.y}) scale(1)`);
+    hideTooltip(true);
+  });
+
+    svg.on("click", () => {
+    lockedEventId = null;
+    lockedPinNode = null;
+    pinSelection.classed("is-active", false)
+      .interrupt()
+      .transition()
+      .duration(140)
+      .attr("transform", d => `translate(${d.x},${d.y}) scale(1)`);
+    hideTooltip(true);
+  });
+
+  setActiveMonth("All Events");
+});
+
+updateCounts("All Events");
+renderInpersonTableFiltered("All Events");
+setView("inperson");
