@@ -80,6 +80,7 @@
       border-left: 4px solid var(--nar-blue);
       color: var(--muted);
       font-size: .93rem;
+     font-style: italic;
     }
 
     .hero-note strong { display: block; margin-bottom: 5px; color: var(--nar-navy); font-style: italic;}
