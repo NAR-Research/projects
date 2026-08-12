@@ -82,7 +82,7 @@
       font-size: .93rem;
     }
 
-    .hero-note strong { display: block; margin-bottom: 5px; color: var(--nar-navy); }
+    .hero-note strong { display: block; margin-bottom: 5px; color: var(--nar-navy); font-style: italic;}
 
     .experience-picker {
       position: relative;
