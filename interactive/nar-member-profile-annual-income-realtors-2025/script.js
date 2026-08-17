@@ -133,7 +133,7 @@ const incomeData = {
       $("selected-bar-label").textContent = `Your group (${base.label})`;
       $("other-bar-label").textContent = other.label;
       $("compare-copy").innerHTML = delta === 0
-        ? `<span class="compare-difference">The two groups have the same median income.</span>`
+        ? `<span class="compare-difference">The two groups have the same 2025 median gross income.</span>`
         : `<span class="compare-difference">${currency.format(Math.abs(delta))} ${delta > 0 ? "higher" : "lower"}</span> than your selected group.`;
       $("compare-chart").setAttribute("aria-label", `${base.label}: ${currency.format(base.median)}; ${other.label}: ${currency.format(other.median)}`);
       $("compare-result").classList.add("visible");
