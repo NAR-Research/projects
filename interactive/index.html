@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>REALTOR® Benefits Interactive</title>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+<div class="interactive">
+
+  <!-- TITLE -->
+
+  <h1 class="title">
+    What Benefits Do REALTORS® See From Technology?
+  </h1>
+
+  <!-- <p class="subtitle">
+    Select an experience level to see which benefits REALTORS® value most.
+  </p> -->
+  
+  <p class="subtitle">
+  Overall, 71 percent of REALTORS® say improving the client experience is a key motivation for embracing new tools. Meanwhile, 74 percent of REALTORS® with three to ten years of experience adopt new technology to stay ahead of the competition.
+  </p>
+
+  <!-- EXPERIENCE SELECTOR -->
+
+  <div class="selector-wrap">
+
+    <div class="selector-label">
+      Years in Real Estate
+    </div>
+
+    <div
+      class="experience-tabs"
+      id="tabs"
+      role="group"
+      aria-label="Select years of real estate experience">
+    </div>
+
+  </div>
+
+
+  <!-- DYNAMIC SUMMARY -->
+
+  <div class="summary">
+    <p
+      class="summary-text"
+      id="summary"
+      aria-live="polite">
+    </p>
+  </div>
+
+
+  <!-- CHART -->
+
+  <div
+    class="chart"
+    id="chart">
+  </div>
+
+
+  <!-- FOOTER -->
+
+  <div class="footer">
+
+    <div class="footer-text">
+      <p>
+        Source: 2026 National Association of REALTORS® Technology Survey
+      </p>
+
+      <p>
+        Chart by Jovi Dai/National Association of REALTORS®
+      </p>
+    </div>
+
+    <div class="footer-logo">
+      <img
+        src="NAR Logo_Primary.png"
+        alt="National Association of REALTORS®">
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
