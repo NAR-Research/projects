@@ -1,0 +1,304 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  font-family: Montserrat, Arial, sans-serif;
+  color: #222;
+}
+
+.wrap {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 28px 30px 24px;
+}
+
+/* Title */
+h1 {
+  margin: 0;
+  text-align: left;
+  color: #000;
+  font-size: 25px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+/* Subtitle */
+.subtitle {
+  text-align: left;
+  margin: 8px auto 18px;
+  color: #000;
+  font-size: 1.25rem;
+  line-height: 2rem;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin: 8px 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.highest {
+  background: #006BB7;
+}
+
+.lowest {
+  background: #CF1F28;
+}
+
+/* Map */
+#map {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.state {
+  fill: #e7e8ea;
+  stroke: #fff;
+  stroke-width: 1;
+}
+
+.state-borders {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1;
+  pointer-events: none;
+}
+
+/* Map markers */
+.marker {
+  stroke: #fff;
+  stroke-width: 1.8;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.marker:hover {
+  stroke-width: 3;
+}
+
+/* Tooltip */
+.tooltip {
+  position: fixed;
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #d7d7d7;
+  border-radius: 6px;
+  padding: 10px 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  font-size: 13px;
+  line-height: 1.35;
+  max-width: 260px;
+}
+
+.tooltip strong {
+  display: block;
+  margin-bottom: 3px;
+}
+
+/* Ranking lists */
+.lists {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.panel {
+  border: 1px solid #e2e2e2;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.panel.high {
+  background: #fff6f6;
+}
+
+.panel.low {
+  background: #f4f9fd;
+}
+
+.panel-title {
+  padding: 12px 15px 10px;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.high .panel-title {
+  color: #006BB7;
+}
+
+.low .panel-title {
+  color: #CF1F28;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 18px 30px minmax(0, 1fr) 60px;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+}
+
+.row:last-child {
+  padding-bottom: 12px;
+}
+
+.rank {
+  color: #777;
+  font-size: 12px;
+  text-align: right;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.place {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.value {
+  text-align: right;
+  font-weight: 700;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-top: 18px;
+  padding: 16px 0 4px;
+  color: #666;
+}
+
+.footer-copy {
+  min-width: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  font-weight: 400;
+}
+
+.source,
+.credit {
+  margin: 0;
+  text-align: left;
+}
+
+.nar-logo {
+  width: 220px;
+  max-width: 28%;
+  height: auto;
+  display: block;
+  flex: 0 0 auto;
+}
+
+
+/* =========================
+   MOBILE ONLY
+   ========================= */
+
+@media (max-width: 700px) {
+
+  .wrap {
+    padding: 20px 14px;
+  }
+
+  /* Keep ranking panels stacked */
+  .lists {
+    grid-template-columns: 1fr;
+  }
+
+  /* Compact subtitle on mobile */
+  .subtitle {
+    font-size: 13px;
+    line-height: 1.45rem;
+    margin: 7px 0 12px;
+  }
+
+  /* Compact horizontal centered legend */
+  .legend {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 14px;
+
+    /* Extra space between legend and map */
+    margin: 8px 0 14px;
+
+    padding-left: 0;
+    font-size: 9px;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: auto;
+    white-space: nowrap;
+  }
+
+  .legend-dot {
+    width: 9px;
+    height: 9px;
+    flex: 0 0 9px;
+  }
+
+  .row {
+    font-size: 12px;
+  }
+
+  /* Footer */
+  .footer {
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .footer-copy {
+    font-size: 12px;
+  }
+
+  .nar-logo {
+    width: 170px;
+    max-width: 36%;
+  }
+
+  .credit {
+    text-align: left;
+    margin-left: 0;
+  }
+}
