@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Metropolitan Areas with the Largest Changes in Hidden Demand, 2024–2025</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+
+<link rel="stylesheet" href="style.css" />
+
+</head>
+
+
+<body>
+
+<div class="wrap">
+
+  <!-- =====================================================
+       TITLE
+  ====================================================== -->
+
+  <h1>
+    Metropolitan Areas with the Largest Changes in Hidden Demand, 2024–2025
+  </h1>
+
+
+  <!-- =====================================================
+       SUBTITLE
+  ====================================================== -->
+
+  <div class="subtitle">
+    In 2025, hidden demand decreased the most in Little Rock-North Little Rock-Conway, AR (-4.7 pp), Gulfport-Biloxi, MS (-4.4 pp), and Burlington-South Burlington, VT (-4.3 pp). Conversely, the areas where the share of hidden demand increased the most were Elmira, NY (+3.5 pp), Gainesville, FL (+3.0 pp), and Medford, OR (+3.0 pp)
+  </div>
+
+
+  <!-- =====================================================
+       LEGEND
+  ====================================================== -->
+
+  <div class="legend">
+
+    <div class="legend-item">
+      <span class="legend-dot increase"></span>
+      Largest Percentage Point Increases
+    </div>
+
+    <div class="legend-item">
+      <span class="legend-dot decrease"></span>
+      Largest Percentage Point Decreases
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       MAP
+  ====================================================== -->
+
+  <svg
+    id="map"
+    viewBox="0 0 1100 570"
+    role="img"
+    aria-label="U.S. map showing metropolitan areas with the largest percentage point increases and decreases in hidden demand"
+  ></svg>
+
+  <div
+    class="tooltip"
+    id="tooltip"
+  ></div>
+
+
+  <!-- =====================================================
+       RANKED LISTS
+  ====================================================== -->
+
+  <div class="lists">
+
+    <section class="panel increase-panel">
+
+      <div class="panel-title">
+        Top 10 Largest Percentage Point Increases
+      </div>
+
+      <div id="increase-list"></div>
+
+    </section>
+
+
+    <section class="panel decrease-panel">
+
+      <div class="panel-title">
+        Top 10 Largest Percentage Point Decreases
+      </div>
+
+      <div id="decrease-list"></div>
+
+    </section>
+
+  </div>
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <div class="footer">
+
+    <div class="footer-copy">
+
+      <p class="source">
+        Source: Home Mortgage Disclosure Act (HMDA), NAR calculations
+      </p>
+
+      <p class="credit">
+        Chart by Jovi Dai/National Association of REALTORS®
+      </p>
+
+    </div>
+
+
+    <!--
+      Replace this src with the same NAR logo data URI
+      from your current file if you want everything
+      completely self-contained.
+
+      If nar-logo.png is in the same GitHub folder,
+      this will work as written.
+    -->
+
+    <img
+      class="nar-logo"
+      src="./NAR Logo_Primary.png"
+      alt="National Association of REALTORS®"
+    >
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
+
+
+
