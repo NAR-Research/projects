@@ -1,0 +1,37 @@
+const groups=['Hispanic','White','Black','Asian'];
+const data={'Income ($)':{'2014':[41489,56000,34235,72709],'2024':[70618,84782,54885,114218]},'Median Age (Years Old)':{'2014':[43,53,48,45],'2024':[45,55,50,46]},'Education (%)':{'2014':[16.3,33.9,21.5,58.5],'2024':[23.9,42.6,29.5,64.8]}};
+let selected='Income ($)';
+function fmt(n) {
+if(selected==='Income ($)')return '$'+n.toLocaleString('en-US');
+if(selected==='Education (%)')return n.toFixed(1)+'%';
+return n+' Years Old'}function render() {
+let max=Math.max(...Object.values(data[selected]).flat())*1.06;
+let chart=document.getElementById('chart');
+chart.innerHTML='';
+for(const [year,values] of Object.entries(data[selected])){let sec=document.createElement('section');
+sec.className='year';
+let title=document.createElement('h2');
+title.textContent=year;
+sec.appendChild(title);
+let bars=document.createElement('div');
+bars.className='bars';
+values.forEach((v,i)=>{let track=document.createElement('div');
+track.className='track';
+track.setAttribute('data-tip',`${year} · ${groups[i]}: ${fmt(v)}`);
+track.setAttribute('aria-label',`${year}, ${groups[i]}, ${fmt(v)}`);
+let bar=document.createElement('div');
+bar.className='bar '+groups[i].toLowerCase();
+bar.style.width=(v/max*100)+'%';
+let label=document.createElement('span');
+label.className='label';
+label.textContent=fmt(v);
+bar.appendChild(label);
+track.appendChild(bar);
+bars.appendChild(track);
+requestAnimationFrame(()=>{if(label.scrollWidth+18>bar.clientWidth)bar.classList.add('outside')})});
+sec.appendChild(bars);
+chart.appendChild(sec)}}document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{selected=b.dataset.cat;
+document.querySelectorAll('.tab').forEach(x=>{x.classList.toggle('active',x===b);
+x.setAttribute('aria-selected',x===b?'true':'false')});
+render()}));
+render();
