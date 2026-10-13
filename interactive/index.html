@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Demographic Characteristics of Hispanic Homeownership
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="style.css" />
+  
+ </head>
+ <body>
+  <main class="wrap">
+   <div class="top">
+    <h1>
+     Demographic Characteristics of Hispanic Homeownership
+    </h1>
+    <div class="hint">
+     ☞ Hover over the chart
+     <br/>
+     to view more
+    </div>
+   </div>
+   <p class="subtitle">
+    According to data, the typical Hispanic American individual was 45 years old, had an income of $70,618, and an average household size of 3 individuals.
+   </p>
+   <div aria-label="Select demographic measure" class="tabs" role="tablist">
+    <button aria-selected="true" class="tab active" data-cat="Income ($)" role="tab">
+     Income ($)
+    </button>
+    <button aria-selected="false" class="tab" data-cat="Median Age (Years Old)" role="tab">
+     Median Age (Years Old)
+    </button>
+    <button aria-selected="false" class="tab" data-cat="Education (%)" role="tab">
+     Education (%)
+    </button>
+   </div>
+   <div class="legend">
+    <div class="key">
+     <i class="dot">
+     </i>
+     Hispanic
+    </div>
+    <div class="key">
+     <i class="dot">
+     </i>
+     White
+    </div>
+    <div class="key">
+     <i class="dot">
+     </i>
+     Black
+    </div>
+    <div class="key">
+     <i class="dot">
+     </i>
+     Asian
+    </div>
+   </div>
+   <section aria-live="polite" id="chart">
+   </section>
+   <footer class="foot">
+    <div class="source">
+     Source: 2024 Census Bureau’s American Community Survey
+     <br/>
+     Chart by Jovi Dai/National Association of REALTORS®
+    </div>
+    <img alt="National Association of REALTORS® logo" class="nar-logo" src="NAR_logo.png"/>
+   </footer>
+  </main>
+
+  <div class="tooltip" id="tooltip"></div>
+
+  <script src="script.js"></script>
+  
+ </body>
+</html>
