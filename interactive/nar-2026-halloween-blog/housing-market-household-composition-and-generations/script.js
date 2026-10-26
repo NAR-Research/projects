@@ -1,9 +1,9 @@
  // Original percentages supplied by the user; no derived data.
     const data = [
-      { category: "Married couple", all: 61, pet: 52 },
-      { category: "Single female", all: 21, pet: 27 },
-      { category: "Single male", all: 9, pet: 3 },
-      { category: "Unmarried couple", all: 6, pet: 14 },
+      { category: "Married Couple", all: 61, pet: 52 },
+      { category: "Single Female", all: 21, pet: 27 },
+      { category: "Single Male", all: 9, pet: 3 },
+      { category: "Unmarried Couple", all: 6, pet: 14 },
       { category: "Other", all: 3, pet: 5 }
     ];
 
