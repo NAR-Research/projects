@@ -1,0 +1,862 @@
+:root{
+    --navy:#004282;
+    --blue:#006BB7;
+    --sky:#2DA8E0;
+    --pale:#BED7EA;
+    --ink:#17324c;
+    --muted:#617488;
+    --line:#e2ebf2;
+    --bg:#f5f9fc
+}
+*{
+    box-sizing:border-box
+}
+
+/* Apply Montserrat to every text element, including SVG/D3 labels and tooltips. */
+html,
+body,
+button,
+input,
+select,
+textarea,
+svg,
+svg text,
+svg tspan,
+.tooltip,
+[role="tooltip"] {
+    font-family: "Montserrat", Arial, sans-serif !important;
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    font-family:Montserrat,Arial,sans-serif;
+    color:var(--ink)
+}
+.wrap{
+    max-width:1080px;
+    margin:28px auto;
+    padding:28px 32px 22px;
+    background:white;
+    border:1px solid #e5edf4;
+    border-radius:18px;
+    box-shadow:0 14px 40px #0042820a
+}
+.eyebrow{
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--blue)
+}
+h1{
+    font-size:clamp(23px,3vw,34px);
+    line-height:1.25;
+    color:var(--navy);
+    margin:10px 0
+}
+p.sub{
+    font-size:13px;
+    color:var(--muted);
+    line-height:1.7;
+    margin:0 0 23px
+}
+.toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+    border-bottom:1px solid var(--line);
+    padding-bottom:18px
+}
+.tabs{
+    display:flex;
+    gap:5px;
+    flex-wrap:wrap;
+    background:#edf5fa;
+    padding:5px;
+    border-radius:10px
+}
+.tab{
+    border:0;
+    border-radius:7px;
+    padding:10px 14px;
+    font:700 11px Montserrat;
+    cursor:pointer;
+    color:var(--navy);
+    background:transparent
+}
+.tab.active{
+    background:white;
+    box-shadow:0 2px 8px #00428220
+}
+.legend{
+    display:flex;
+    gap:17px;
+    font-size:11px;
+    font-weight:700;
+    color:var(--muted)
+}
+.legend span{
+    display:flex;
+    align-items:center;
+    gap:6px
+}
+.dot{
+    width:10px;
+    height:10px;
+    border-radius:3px;
+    display:inline-block
+}
+.dot.y25{
+    background:var(--pale)
+}
+.dot.y26{
+    background:var(--blue)
+}
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+    margin:20px 0
+}
+.metric{
+    background:#f8fbfe;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:17px 16px;
+    text-align:left;
+    cursor:pointer;
+    transition:.2s;
+    font-family:inherit;
+    min-width:0
+}
+.metric:hover,.metric.active{
+    border-color:var(--blue);
+    box-shadow:0 4px 16px #006bb71a;
+    transform:translateY(-2px)
+}
+.metric .name{
+    font-size:11px;
+    line-height:1.5;
+    font-weight:700;
+    color:var(--muted);
+    min-height:34px
+}
+.metric .change{
+    font-size:clamp(22px,3vw,32px);
+    font-weight:800;
+    color:var(--navy);
+    margin:7px 0 3px
+}
+.metric .tag{
+    font-size:10px;
+    font-weight:700;
+    color:#087d73
+}
+.viz{
+    position:relative;
+    min-height:310px
+}
+.charttitle{
+    font-weight:800;
+    font-size:17px;
+    color:var(--navy);
+    margin:5px 0 4px
+}
+.chartsub{
+    font-size:11px;
+    color:var(--muted);
+    margin-bottom:10px
+}
+.chart{
+    width:100%;
+    height:240px;
+    display:block
+}
+.axis text{
+    font:600 11px Montserrat;
+    fill:var(--muted)
+}
+.axis path,.axis line{
+    display:none
+}
+.grid line{
+    stroke:#e8eff5;
+    stroke-dasharray:3 5
+}
+.barlabel{
+    font:800 13px Montserrat;
+    fill:var(--navy)
+}
+.barvalue{
+    font:700 13px Montserrat;
+    fill:var(--navy)
+}
+.footer{
+    border-top:1px solid var(--line);
+    padding-top:15px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:9px;
+    color:var(--muted);
+    font-size:10px;
+    line-height:1.6
+}
+.tip{
+    position:absolute;
+    pointer-events:none;
+    background:#fff;
+    border:1px solid #dce7f0;
+    border-radius:9px;
+    box-shadow:0 8px 24px #17324c20;
+    padding:10px 12px;
+    font-size:11px;
+    line-height:1.8;
+    opacity:0;
+    transition:opacity .1s;
+    z-index:3
+}
+.note{
+    font-size:11px;
+    color:var(--muted);
+    margin:3px 0 18px
+}
+.tip strong{
+    color:var(--navy)
+}
+@media(max-width:650px){
+    .wrap{
+        margin:0;
+        padding:21px 16px;
+        border-radius:0
+    }
+    .cards{
+        grid-template-columns:1fr;
+        gap:8px
+    }
+    .metric{
+        padding:12px 14px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px
+    }
+    .metric .name{
+        min-height:0;
+        max-width:48%
+    }
+    .metric .change{
+        margin:0;
+        font-size:22px
+    }
+    .metric .tag{
+        font-size:9px
+    }
+    .tab{
+        padding:9px 10px
+    }
+    .charttitle{
+        font-size:15px
+    }
+    .legend{
+        gap:10px
+    }
+    .viz{
+        min-height:270px
+    }
+    .chart{
+        height:210px
+    }
+}
+/* Updated NAR editorial layout */
+:root{
+    --navy:#333333;
+    --blue:#006bb7;
+    --sky:#006bb7;
+    --pale:#ff7f61;
+    --ink:#333333;
+    --muted:#595959;
+    --line:#e6e6e6;
+    --bg:#ffffff
+}
+html,body{
+    background:#fff
+}
+.wrap{
+    max-width:1408px;
+    min-height: min(900px, 100vh);
+    margin:0 auto;
+    padding:30px 16px 20px;
+    border:0;
+    border-top:1px solid #eee;
+    border-radius:0;
+    box-shadow:none;
+    display:flex;
+    flex-direction:column
+}
+h1{
+    font-size:clamp(24px,2.4vw,32px);
+    font-weight:700;
+    color:#333;
+    margin:0 0 24px;
+    line-height:1.3
+}
+p.sub{
+    font-size:clamp(14px,1.65vw,22px);
+    color:#333;
+    line-height:1.55;
+    margin:0 0 30px
+}
+.toolbar{
+    justify-content:center;
+    border-bottom:0;
+    padding-bottom:12px
+}
+.tabs{
+    background:#f5f5f5
+}
+.tab{
+    font-size:12px;
+    color:#333
+}
+.tab.active{
+    color:#006bb7
+}
+.legend{
+    justify-content:center;
+    align-items:center;
+    gap:35px;
+    margin:8px auto 15px;
+    font-size:15px;
+    font-weight:700;
+    color:#333
+}
+.legend span{
+    gap:10px
+}
+.dot{
+    width:17px;
+    height:17px;
+    border-radius:3px
+}
+.dot.y25{
+    background:#ff7f61
+}
+.dot.y26{
+    background:#006bb7
+}
+.metric{
+    background:#fff;
+    border-color:#e7e7e7
+}
+.metric .change{
+    color:#006bb7
+}
+.metric .tag{
+    color:#006bb7
+}
+.charttitle,.barvalue{
+    color:#333;
+    fill:#333
+}
+.footer{
+    margin-top:auto;
+    border:0;
+    padding-top:35px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:20px;
+    font-size:clamp(11px,1.45vw,19px);
+    line-height:1.45;
+    color:#555
+}
+.footer-copy{
+    max-width:75%
+}
+.nar-logo{
+    width:clamp(145px,18vw,245px);
+    height:auto;
+    object-fit:contain;
+    display:block
+}
+@media(max-width:650px){
+    .wrap{
+        padding:22px 14px 16px;
+        min-height:100vh
+    }
+    .legend{
+        font-size:14px;
+        gap:26px
+    }
+    .dot{
+        width:15px;
+        height:15px
+    }
+    .footer{
+        gap:12px;
+        font-size:11px
+    }
+    .footer-copy{
+        max-width:65%
+    }
+    .nar-logo{
+        width:120px
+    }
+    p.sub{
+        margin-bottom:20px
+    }
+}
+/* Chart header and responsive interaction hint */
+.chart-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    width:100%;
+    box-sizing:border-box;
+    margin:5px 0 8px
+}
+.chart-title{
+    font-family:Montserrat,Arial,sans-serif;
+    font-size:23px;
+    line-height:1.3;
+    font-weight:700;
+    color:#333;
+    flex:1 1 auto;
+    min-width:0
+}
+.tap-hint.fancy{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    flex:0 0 auto;
+    margin-left:auto;
+    box-sizing:border-box;
+    padding:7px 11px 7px 9px;
+    background:linear-gradient(180deg,#fafafa 0%,#ececec 100%);
+    border:1px solid #d8d8d8;
+    border-radius:8px;
+    box-shadow:0 1px 2px rgba(0,0,0,.05),0 4px 10px rgba(0,0,0,.08)
+}
+.tap-hint.fancy .icon-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 auto
+}
+.tap-hint.fancy .tap-icon{
+    display:inline-block;
+    font-size:18px;
+    line-height:1;
+    color:#7a7a7a;
+    transform:rotate(-12deg)
+}
+.tap-hint.fancy .tap-text{
+    font-family:Montserrat,Arial,sans-serif;
+    font-size:10px;
+    line-height:1.08;
+    font-style:italic;
+    font-weight:700;
+    color:#6d6d6d;
+    letter-spacing:0;
+    text-align:left;
+    white-space:nowrap
+}
+.tap-hint.fancy .desktop-text{
+    display:block
+}
+.tap-hint.fancy .mobile-text{
+    display:none
+}
+.source-note{
+    margin-bottom:7px;
+    color:#333
+}
+@media(hover:hover) and (pointer:fine){
+    .tap-hint.fancy{
+        transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease
+    }
+    .tap-hint.fancy:hover{
+        transform:translateY(-1px);
+        border-color:#cfcfcf;
+        box-shadow:0 2px 4px rgba(0,0,0,.06),0 8px 18px rgba(0,0,0,.10)
+    }
+}
+@media(max-width:768px){
+    .chart-header{
+        align-items:center;
+        gap:12px
+    }
+    .chart-title{
+        font-size:23px;
+        line-height:1.24
+    }
+    .tap-hint.fancy{
+        padding:6px 10px 6px 8px;
+        gap:6px
+    }
+    .tap-hint.fancy .tap-icon{
+        font-size:16px
+    }
+    .tap-hint.fancy .tap-text{
+        font-size:9px;
+        line-height:1.06
+    }
+}
+@media(max-width:480px){
+    .chart-header{
+        flex-direction:row;
+        align-items:flex-start;
+        justify-content:space-between;
+        gap:8px
+    }
+    .chart-title{
+        font-size:13px;
+        line-height:1.26;
+        flex:1 1 auto;
+        min-width:0
+    }
+    .tap-hint.fancy{
+        flex:0 0 auto;
+        align-self:flex-start;
+        margin-left:0;
+        margin-top:2px;
+        padding:5px 7px 5px 6px;
+        gap:4px;
+        border-radius:7px
+    }
+    .tap-hint.fancy .tap-icon{
+        font-size:13px
+    }
+    .tap-hint.fancy .tap-text{
+        font-size:7px;
+        line-height:1.02;
+        white-space:nowrap
+    }
+    .tap-hint.fancy .desktop-text{
+        display:none
+    }
+    .tap-hint.fancy .mobile-text{
+        display:block
+    }
+}
+@media(hover:none){
+    .tap-hint.fancy .desktop-text{
+        display:none
+    }
+    .tap-hint.fancy .mobile-text{
+        display:block
+    }
+}
+.main-heading{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:24px
+}
+.main-heading h1{
+    margin:0;
+    flex:1;
+    min-width:0
+}
+.main-heading .tap-hint.fancy{
+    margin-left:0
+}
+@media(max-width:480px){
+    .main-heading{
+        gap:8px;
+        align-items:flex-start;
+        margin-bottom:20px
+    }
+    .main-heading h1{
+        font-size:clamp(18px,5vw,24px)
+    }
+    .main-heading .tap-hint.fancy{
+        margin-top:2px
+    }
+}
+/* Keep the note and source directly below the chart instead of pinning the footer to the viewport bottom. */
+.wrap{
+    min-height:0
+}
+.viz{
+    min-height:0
+}
+.footer{
+    margin-top:0;
+    padding-top:8px
+}
+@media(max-width:650px){
+    .wrap{
+        min-height:0
+    }
+    .viz{
+        min-height:0
+    }
+}
+/* Version 7: larger, responsive year and numeric labels. */
+.axis text{
+    font-family:Montserrat,Arial,sans-serif;
+    font-size:16px;
+    font-weight:700;
+    fill:#333
+}
+.barvalue{
+    font-family:Montserrat,Arial,sans-serif;
+    font-size:16px;
+    font-weight:700;
+    fill:#333
+}
+@media(max-width:768px){
+    .axis text,.barvalue{
+        font-size:15px
+    }
+}
+@media(max-width:480px){
+    .axis text,.barvalue{
+        font-size:13px
+    }
+}
+
+/* Version 9: Keep the NAR logo at the right of the footer on all screens. */
+.footer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+.footer-copy {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+.nar-logo {
+    flex: 0 0 auto;
+    max-width: 35%;
+}
+@media (max-width: 650px) {
+    .footer {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-end;
+        gap: 12px;
+    }
+    .footer-copy {
+        flex: 1 1 0;
+        max-width: none;
+    }
+    .nar-logo {
+        flex: 0 0 auto;
+        width: clamp(82px, 27vw, 120px);
+        max-width: 35%;
+        height: auto;
+        margin-left: auto;
+    }
+}
+
+/* Version 10: shared Pet-Motivated Home Buyers editorial design system */
+:root {
+  --blue: #006bb7;
+  --coral: #ff7f61;
+  --ink: #222222;
+  --muted: #626b74;
+  --line: #e8ebee;
+}
+html, body, button, input, select, textarea, svg, svg text, svg tspan, .tip {
+  font-family: "Montserrat", Arial, sans-serif !important;
+}
+body { margin: 0; background: #fff; color: var(--ink); }
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 34px 24px 25px;
+  background: #fff;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.main-heading { align-items: center; gap: 18px; margin-bottom: 0; }
+.main-heading h1 {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.3;
+  font-weight: 750;
+  color: var(--ink);
+}
+p.sub {
+  max-width: 100%;
+  margin: 12px 0 26px;
+  color: #505862;
+  font-size: 14px;
+  line-height: 1.65;
+  font-weight: 400;
+}
+.toolbar { justify-content: center; border-bottom: 0; padding-bottom: 0; }
+.tabs { background: #f5f5f5; }
+.tab { font-size: 12px; color: var(--ink); }
+.tab.active { color: var(--blue); }
+.legend {
+  justify-content: center;
+  gap: 30px;
+  margin: 17px 0;
+  color: #333;
+  font-size: 12px;
+  font-weight: 650;
+}
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.y25 { background: var(--coral); }
+.dot.y26 { background: var(--blue); }
+.cards { gap: 12px; margin: 17px 0 16px; }
+.metric {
+  background: #fff;
+  border: 1px solid #e1e4e8;
+  border-radius: 9px;
+  padding: 17px 16px;
+  box-shadow: none;
+}
+.metric:hover, .metric.active { border-color: var(--blue); box-shadow: none; transform: none; }
+.metric .name { color: #555; font-size: 11px; }
+.metric .change { color: var(--blue); }
+.metric .tag { color: var(--blue); }
+.chartsub { color: #626b74; font-size: 11px; }
+.axis text, .barvalue { fill: #333; }
+.grid line { stroke: #e8ebee; }
+.tip {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 10;
+  min-width: 205px;
+  max-width: min(310px, calc(100vw - 26px));
+  padding: 11px 14px;
+  background: #fff;
+  border: 1px solid #e1e4e8;
+  border-radius: 9px;
+  box-shadow: 0 5px 22px #00000019;
+  color: #222;
+  font-size: 11px;
+  line-height: 1.8;
+  transition: opacity 120ms;
+}
+.tip .tip-title { display: block; font-size: 12px; font-weight: 750; color: #222; }
+.tip .tip-value { font-weight: 750; }
+.tip .tip-value.coral { color: #d96145; }
+.tip .tip-value.blue { color: var(--blue); }
+.footer {
+  margin-top: 0;
+  padding-top: 14px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  border-top: 1px solid #e8ebee;
+  color: #555;
+  font-size: 10px;
+  line-height: 1.9;
+}
+.footer-copy { flex: 1 1 auto; min-width: 0; }
+.nar-logo { width: 112px; max-width: 35%; height: auto; flex: 0 0 auto; object-fit: contain; }
+@media (max-width: 768px) {
+  .wrap { padding: 24px 16px 20px; }
+  .main-heading h1 { font-size: 22px; }
+  p.sub { font-size: 12px; }
+  .legend { font-size: 11px; gap: 20px; }
+}
+@media (max-width: 650px) {
+  .wrap { margin: 0 auto; border: 0; border-radius: 0; box-shadow: none; }
+  .footer { flex-direction: row; flex-wrap: nowrap; align-items: flex-end; gap: 12px; }
+  .footer-copy { flex: 1 1 0; min-width: 0; }
+  .nar-logo { width: clamp(82px, 27vw, 112px); max-width: 35%; margin-left: auto; }
+}
+@media (max-width: 480px) {
+  .wrap { padding: 20px 11px 16px; }
+  .main-heading { gap: 8px; align-items: flex-start; }
+  .main-heading h1 { font-size: 16px; line-height: 1.3; }
+  p.sub { font-size: 11px; margin: 12px 0 18px; }
+  .legend { font-size: 9px; gap: 14px; }
+  .dot { width: 9px; height: 9px; }
+  .footer { font-size: 9px; }
+  .nar-logo { width: 82px; }
+  .tip { font-size: 11px; }
+}
+
+/* Version 11 — Match the full-width Pet-Motivated Home Buyers page */
+.wrap {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 22px 24px 26px;
+  box-sizing: border-box;
+}
+.main-heading { align-items: flex-start; gap: 20px; }
+.main-heading h1 {
+  font-size: 34px;
+  line-height: 1.3;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+}
+p.sub {
+  max-width: none;
+  margin: 25px 0 30px;
+  font-size: 23px;
+  line-height: 1.55;
+  color: #333;
+}
+.legend { font-size: 18px; gap: 32px; margin: 20px 0 22px; }
+.dot { width: 18px; height: 18px; }
+.metric .name { font-size: 14px; }
+.metric .change { font-size: 34px; }
+.metric .tag { font-size: 12px; }
+.chartsub { font-size: 14px; }
+.footer { font-size: 18px; line-height: 1.45; border-top: 0; }
+.nar-logo { width: 265px; max-width: 32%; }
+@media (max-width: 900px) {
+  .wrap { padding: 20px 20px 22px; }
+  .main-heading h1 { font-size: 27px; }
+  p.sub { font-size: 18px; margin: 18px 0 24px; }
+  .legend { font-size: 16px; }
+  .footer { font-size: 15px; }
+  .nar-logo { width: 205px; }
+}
+@media (max-width: 600px) {
+  .wrap { padding: 16px 14px 20px; }
+  .main-heading { gap: 8px; }
+  .main-heading h1 { font-size: 18px; line-height: 1.26; letter-spacing: 0; }
+  p.sub { font-size: 13px; line-height: 1.6; margin: 15px 0 20px; }
+  .legend { font-size: 12px; gap: 14px; margin: 12px 0 15px; }
+  .dot { width: 12px; height: 12px; }
+  .metric .name { font-size: 11px; }
+  .metric .change { font-size: 25px; }
+  .metric .tag { font-size: 10px; }
+  .chartsub { font-size: 11px; }
+  .footer { font-size: 12px; gap: 12px; }
+  .nar-logo { width: clamp(90px, 29vw, 155px); max-width: 35%; }
+}
+
+/* Version 12: Match Pet-Motivated Home Buyers tooltip text sizing. */
+.tip {
+  font-size: 13px;
+  line-height: 1.8;
+}
+.tip .tip-title {
+  font-size: 14px;
+  font-weight: 750;
+}
+@media (max-width: 480px) {
+  .tip { font-size: 13px; }
+  .tip .tip-title { font-size: 14px; }
+}
+
+/* Shared NAR editorial heading weight: Montserrat Bold (700). */
+.main-heading h1 {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: 700;
+}
