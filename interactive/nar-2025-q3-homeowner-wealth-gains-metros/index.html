@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Homeowner Wealth Gains Across Metro Areas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+  <main class="page">
+    <div class="chart-header">
+      <h1 class="chart-title">Homeowner Equity Gains Across U.S. Metros</h1>
+      <div class="tap-hint fancy" aria-hidden="true">
+        <div class="icon-wrap"><span class="tap-icon">☞</span></div>
+        <div class="tap-text">
+          <span class="desktop-text">Hover over the chart<br />to view more</span>
+          <span class="mobile-text">Tap the chart<br />to view more</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="subtitle">About 88 million homeowners nationwide are sitting on a substantial financial cushion due to years of accumulated housing wealth.</p>
+
+    <div class="controls">
+      <div class="control">
+        <label for="year">Reference Year</label>
+        <select id="year"></select>
+      </div>
+      <div class="control">
+        <label for="search">Find a Metropolitan Area</label>
+        <input id="search" type="search" list="metro-suggestions" placeholder="Search Metro or State" autocomplete="off" />
+        <datalist id="metro-suggestions"></datalist>
+      </div>
+      <div class="control">
+        <label for="sort">Sort Metros</label>
+        <select id="sort">
+          <option value="high">Highest Amount First</option>
+          <option value="low">Lowest Amount First</option>
+          <option value="alpha" selected>Metro Name A–Z</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="two-panel">
+      <section class="panel">
+        <h2 class="section-title">Compare Metropolitan Areas</h2>
+        <p class="section-desc">Each Bar Shows the Reported Amount for the Selected Year. Select Any Metro for Details.</p>
+        <div class="legend">
+          <span><i class="dot"></i>Positive Amount</span>
+          <span><i class="dot negative"></i>Negative Amount</span>
+          <span><i class="dot missing"></i>Unavailable</span>
+        </div>
+        <div id="metro-list" class="list" role="list"></div>
+        <p class="scroll-hint">↓ Keep Scrolling to Explore More Metropolitan Areas</p>
+      </section>
+
+      <section class="panel">
+        <h2 class="section-title">Explore a Metro's Wealth Gains</h2>
+        <p class="section-desc">Bars Show Reported Amounts by Q3 Reference Year. Negative Values Are Shown in Coral.</p>
+        <div class="detail-heading" id="metro-heading"></div>
+        <p class="detail-caption" id="metro-caption"></p>
+        <div class="chart-wrap">
+          <svg id="detail-svg" role="img" aria-label="Interactive bar chart of homeowner wealth gains by Q3 reference year"></svg>
+        </div>
+      </section>
+    </div>
+
+    <p class="footnote"><strong><em>*Note:</em></strong> Q3 indicates the third quarter.</p>
+    <footer>
+      <div class="credit">Source: NAR data<br />Chart by Jovi Dai/National Association of REALTORS®</div>
+    <img src="NAR Logo_Primary.png" alt="NAR Logo" class="nar-logo">
+    </footer>
+  </main>
+
+  <div id="tooltip" class="tooltip" role="status"></div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
