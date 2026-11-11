@@ -1,0 +1,306 @@
+:root {
+      --blue: #006bb7;
+      --coral: #ff7f61;
+      --ink: #333333;
+      --muted: #666b72;
+      --line: #e3e6e9;
+      --pale: #f6f8fa;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fff; color: var(--ink); font-family: "Montserrat", Arial, sans-serif; }
+    button, input, select, svg, .tooltip { font-family: "Montserrat", Arial, sans-serif; }
+    .page { width: 100%; max-width: 1600px; padding: 24px 24px 30px; margin: 0 auto; }
+    .chart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    h1, .chart-title {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 19px;
+      line-height: 1.22;
+      font-weight: 700;
+      color: #333;
+      flex: 1 1 auto;
+      min-width: 0;
+      margin: 0;
+    }
+    .subtitle {
+      font-size: clamp(15px, 1.55vw, 21px);
+      font-weight: 400;
+      line-height: 1.55;
+      margin: 20px 0 24px;
+    }
+    .tap-hint.fancy {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      flex: 0 0 auto;
+      margin-left: auto;
+      box-sizing: border-box;
+      padding: 7px 11px 7px 9px;
+      background: linear-gradient(180deg, #fafafa 0%, #ececec 100%);
+      border: 1px solid #d8d8d8;
+      border-radius: 8px;
+      box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 4px 10px rgba(0,0,0,.08);
+    }
+    .tap-hint.fancy .icon-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+    }
+    .tap-hint.fancy .tap-icon {
+      display: inline-block;
+      font-size: 18px;
+      line-height: 1;
+      color: #7a7a7a;
+      transform: rotate(-12deg);
+    }
+    .tap-hint.fancy .tap-text {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 10px;
+      line-height: 1.08;
+      font-style: italic;
+      font-weight: 700;
+      color: #6d6d6d;
+      letter-spacing: 0;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .tap-hint.fancy .desktop-text { display: block; }
+    .tap-hint.fancy .mobile-text { display: none; }
+    @media (hover: hover) and (pointer: fine) {
+      .tap-hint.fancy {
+        transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      }
+      .tap-hint.fancy:hover {
+        transform: translateY(-1px);
+        border-color: #cfcfcf;
+        box-shadow: 0 2px 4px rgba(0,0,0,.06), 0 8px 18px rgba(0,0,0,.10);
+      }
+    }
+    .section-title { font-size: 22px; font-weight: 700; margin: 0 0 7px; }
+    .section-desc { font-size: 13px; line-height: 1.6; color: var(--muted); margin: 0 0 14px; }
+    .controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin: 0 0 18px; }
+    .control { display: grid; gap: 6px; }
+    .control label { font-size: 11px; font-weight: 700; }
+    .control input, .control select { font-size: 13px; padding: 11px 12px; border: 1px solid #cfd6dc; border-radius: 8px; background: #fff; color: var(--ink); min-height: 42px; }
+    #search { width: min(330px, 78vw); }
+    .two-panel { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 24px; }
+    .panel { border: 1px solid var(--line); border-radius: 14px; padding: 18px; min-width: 0; }
+    .legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin: 8px 0 12px; font-size: 12px; font-weight: 600; }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; background: var(--blue); }
+    .dot.negative { background: var(--coral); }
+    .dot.missing { background: #e5e9ed; border: 1px solid #cfd6dc; }
+    .list { height: 570px; overflow-y: auto; padding-right: 5px; }
+    .metro-row { display: grid; grid-template-columns: minmax(130px, 1.2fr) minmax(0, 1fr) 100px; align-items: center; gap: 9px; width: 100%; padding: 9px 7px; border: 0; border-bottom: 1px solid #edf0f2; background: white; text-align: left; cursor: pointer; color: var(--ink); }
+    .metro-row:hover, .metro-row:focus-visible { background: #f2f8fd; outline: none; }
+    .metro-row.selected { background: #eaf5fc; }
+    .metro-name { font-size: 11px; font-weight: 600; line-height: 1.45; }
+    .track { height: 8px; background: #edf1f4; border-radius: 0; position: relative; overflow: hidden; }
+    .track > span { display: block; height: 100%; border-radius: 0; }
+    .metro-value { font-size: 11px; font-weight: 700; text-align: right; white-space: nowrap; }
+    .detail-heading { font-size: 17px; font-weight: 700; line-height: 1.4; margin: 8px 0 6px; }
+    .detail-caption { font-size: 12px; color: var(--muted); line-height: 1.55; margin: 0 0 12px; }
+    .chart-wrap { width: 100%; position: relative; }
+    #detail-svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .axis text { fill: #626b74; font-size: 10px; }
+    .axis path, .axis line { stroke: #dfe5e9; }
+    .grid line { stroke: #e8edf0; stroke-dasharray: 3 4; }
+    .grid path { display: none; }
+    .scroll-hint { font-size: 12px; color: #666b72; font-style: italic; text-align: center; margin: 12px 0 0; }
+    .tooltip { position: fixed; z-index: 20; pointer-events: none; background: #fff; border: 1px solid #e1e4e8; border-radius: 14px; box-shadow: 0 8px 24px #0002; padding: 14px 16px; font-size: 14px; line-height: 1.65; opacity: 0; max-width: 290px; }
+    .tooltip strong { font-weight: 700; }
+    .tooltip .blue { color: var(--blue); font-weight: 700; }
+    .tooltip .coral { color: #e5694c; font-weight: 700; }
+    .footnote { margin: 22px 0 8px; font-size: 12px; line-height: 1.7; color: #555; }
+    footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; padding-top: 16px; }
+    .credit { font-size: 12px; line-height: 1.65; min-width: 0; }
+    .nar-logo { width: clamp(115px, 17vw, 225px); height: auto; flex-shrink: 0; }
+    .empty { padding: 22px; color: var(--muted); font-size: 13px; }
+
+    @media (max-width: 900px) {
+      .page { padding: 20px 18px 26px; }
+      .two-panel { grid-template-columns: 1fr; }
+      .list { height: 340px; }
+    }
+
+    @media (max-width: 768px) {
+      .chart-header { align-items: center; gap: 12px; }
+      h1, .chart-title { font-size: 19px; line-height: 1.24; }
+      .tap-hint.fancy { padding: 6px 10px 6px 8px; gap: 6px; }
+      .tap-hint.fancy .tap-icon { font-size: 16px; }
+      .tap-hint.fancy .tap-text { font-size: 9px; line-height: 1.06; }
+    }
+
+    @media (max-width: 480px) {
+      .page { padding: 14px 12px 20px; }
+      .subtitle { font-size: 14px; margin: 13px 0 19px; }
+      .chart-header { flex-direction: row; align-items: flex-start; justify-content: space-between; gap: 8px; }
+      h1, .chart-title { font-size: 13px; line-height: 1.26; }
+      .tap-hint.fancy { flex: 0 0 auto; align-self: flex-start; margin-left: 0; margin-top: 2px; padding: 5px 7px 5px 6px; gap: 4px; border-radius: 7px; }
+      .tap-hint.fancy .tap-icon { font-size: 13px; }
+      .tap-hint.fancy .tap-text { font-size: 7px; line-height: 1.02; }
+      .desktop-text { display: none; }
+      .mobile-text { display: block; }
+      .panel { padding: 12px; }
+      .section-title { font-size: 18px; }
+      .metro-row { grid-template-columns: minmax(95px,1fr) minmax(0,.7fr) 82px; gap: 6px; }
+      .metro-name, .metro-value { font-size: 10px; }
+      .credit { font-size: 10px; }
+      .logo { width: 110px; }
+      .tooltip { font-size: 12px; padding: 11px 13px; }
+    }
+  
+    /* Shared NAR editorial typography: Housing Market / Pet-Motivated charts */
+    h1.chart-title {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 25px;
+      line-height: 1.3;
+      font-weight: 700;
+      color: #333;
+    }
+
+    p.subtitle {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.65;
+      font-weight: 400;
+      color: #505862;
+      margin: 12px 0 26px;
+      max-width: none;
+    }
+
+    .footnote {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 11px;
+      line-height: 1.6;
+      font-style: italic;
+      font-weight: 700;
+      color: #333;
+      margin: 8px 0 15px;
+    }
+
+    footer {
+      align-items: flex-end;
+      border-top: 1px solid #e8ebee;
+      padding-top: 14px;
+    }
+
+    footer .credit {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 10px;
+      line-height: 1.9;
+      font-weight: 400;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      h1.chart-title {
+        font-size: 23px;
+        line-height: 1.3;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1.chart-title {
+        font-size: 16px;
+        line-height: 1.3;
+      }
+
+      p.subtitle {
+        font-size: 11px;
+        line-height: 1.65;
+        margin: 12px 0 20px;
+      }
+
+      .footnote {
+        font-size: 11px;
+      }
+
+      footer .credit {
+        font-size: 10px;
+        line-height: 1.7;
+      }
+    }
+
+  
+    /* Version 6: Match Housing Market Trends editorial typography */
+    h1.chart-title {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.5px;
+      color: #333;
+    }
+
+    p.subtitle {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 23px;
+      font-weight: 400;
+      line-height: 1.55;
+      color: #333;
+      margin: 25px 0 30px;
+    }
+
+    .footnote {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.45;
+      color: #333;
+      margin: 16px 0 8px;
+    }
+
+    footer {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    footer .credit {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.45;
+      color: #555;
+    }
+
+    @media (max-width: 900px) {
+      h1.chart-title { font-size: 27px; }
+      p.subtitle { font-size: 18px; margin: 18px 0 24px; }
+      .footnote, footer .credit { font-size: 15px; }
+    }
+
+    @media (max-width: 600px) {
+      h1.chart-title { font-size: 18px; line-height: 1.26; letter-spacing: 0; }
+      p.subtitle { font-size: 13px; line-height: 1.6; margin: 15px 0 20px; }
+      .footnote, footer .credit { font-size: 12px; }
+    }
+/* Version 8: Inset dropdown arrows for balanced control spacing. */
+.control select {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 46px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 18px 18px;
+}
+
+/* Keep the search input's native clear control comfortably inset too. */
+.control input[type="search"] { padding-right: 22px; }
+.control input[type="search"]::-webkit-search-cancel-button { margin-right: 6px; }
+
+@media (max-width: 480px) {
+  .control select { padding-right: 40px; background-position: right 14px center; }
+}
