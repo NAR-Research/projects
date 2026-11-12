@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <title>Primary Reason to Move</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+
+    <link href="style.css" rel="stylesheet" />
+
+  </head>
+  <body>
+    <main class="container">
+      <div class="chart-header">
+        <h1 class="chart-title">
+          Share of Home Buyers by Primary Reason to Move, 2007-2026
+        </h1>
+        <div aria-hidden="true" class="tap-hint fancy">
+          <div class="icon-wrap">
+            <span class="tap-icon"> ☞ </span>
+          </div>
+          <div class="tap-text">
+            <span class="desktop-text">
+              Hover over the chart
+              <br />
+              to view more
+            </span>
+            <span class="mobile-text">
+              Tap the chart
+              <br />
+              to view more
+            </span>
+          </div>
+        </div>
+      </div>
+      <p class="subtitle">
+        Fourteen percent of recent buyers purchased a home specifically to move
+        closer to friends, family, or relatives. Over the last two decades, this
+        reason has steadily grown in importance, surpassing job-related
+        relocations and other life changes.
+      </p>
+      <div class="controls">
+        <button class="filter active" data-key="all">All Reasons</button>
+        <button class="filter" data-key="close">Closer to Family</button>
+        <button class="filter" data-key="job">Job Relocation</button>
+        <button class="filter" data-key="family">Family Situation</button>
+      </div>
+      <div class="chart-wrap" id="chart-wrap">
+        <svg
+          aria-label="Line chart showing three reasons for moving from 2007 through 2026"
+          id="chart"
+          role="img"
+        ></svg>
+        <div class="tooltip" id="tooltip" role="status"></div>
+      </div>
+      <div class="mobile-annotation-note">
+        <strong>
+          <span class="note-num"> 1 </span>
+          A Clear Shift By 2022:
+        </strong>
+        Closer To Family/Friends Reaches 13%, More Than Double Job Relocation
+        (6%).
+      </div>
+      <p class="note">
+        Choose A Category To Spotlight Its Trend &bull; Hover Or Tap A Year To
+        Compare All Three Values
+      </p>
+      <footer class="footer">
+        <div class="footer-text">
+          <div>Source: 2026 Profile of Home Buyers and Sellers Report</div>
+          <div>Chart by Jovi Dai/National Association of REALTORS&reg;</div>
+        </div>
+        <div class="nar-logo-crop"><img alt="NAR Logo" class="nar-logo" src="NAR Logo_Primary.png" /></div>
+      </footer>
+    </main>
+    
+    <script src="script.js"></script> 
+
+  </body>
+</html>
