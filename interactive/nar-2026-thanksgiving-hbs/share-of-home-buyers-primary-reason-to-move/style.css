@@ -1,0 +1,577 @@
+:root {
+        --blue: #006bb7;
+        --coral: #ff7f61;
+        --green: #319b76;
+        --ink: #333;
+        --muted: #555;
+        --line: #d3d9de;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #fff;
+        color: var(--ink);
+        font-family: Montserrat, Arial, sans-serif;
+      }
+      .container {
+        max-width: 1600px;
+        margin: auto;
+        padding: 18px 24px 18px;
+      }
+      .chart-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 34px;
+        line-height: 1.3;
+        font-weight: 750;
+        letter-spacing: -0.5px;
+      }
+      .subtitle {
+        margin: 14px 0 24px;
+        font-size: 23px;
+        line-height: 1.55;
+      }
+      .tap-hint {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        flex: none;
+        padding: 7px 11px 7px 9px;
+        background: linear-gradient(#fafafa, #ececec);
+        border: 1px solid #d8d8d8;
+        border-radius: 8px;
+        box-shadow:
+          0 1px 2px #0000000d,
+          0 4px 10px #00000014;
+        color: #6d6d6d;
+      }
+      .tap-icon {
+        font-size: 18px;
+        transform: rotate(-12deg);
+      }
+      .tap-text {
+        font-size: 10px;
+        font-style: italic;
+        font-weight: 700;
+        line-height: 1.08;
+      }
+      .mobile-text {
+        display: none;
+      }
+      .controls {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 0 0 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #333;
+      }
+      .filter {
+        font:
+          600 14px Montserrat,
+          Arial,
+          sans-serif;
+        color: #222;
+        background: #fff;
+        border: 1px solid #c7c7c7;
+        border-radius: 999px;
+        padding: 9px 17px;
+        cursor: pointer;
+        transition: 0.18s;
+      }
+      .filter:hover {
+        background: #f4f4f4;
+      }
+      .filter.active {
+        background: #222;
+        color: #fff;
+        border-color: #222;
+      }
+      .chart-wrap {
+        position: relative;
+        width: 100%;
+      }
+      svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        font-family: Montserrat, Arial, sans-serif;
+      }
+      .grid line {
+        stroke: var(--line);
+        stroke-dasharray: 2 4;
+      }
+      .grid path,
+      .axis path,
+      .axis line {
+        display: none;
+      }
+      .axis text {
+        fill: #4f5962;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .x-axis .tick line {
+        display: block;
+        stroke: #77818a;
+        stroke-width: 1.25;
+      }
+      .x-axis path.domain {
+        display: block;
+        stroke: #77818a;
+        stroke-width: 1;
+      }
+      .tooltip {
+        position: absolute;
+        z-index: 3;
+        pointer-events: none;
+        opacity: 0;
+        background: #fff;
+        border: 1px solid #e1e4e8;
+        box-shadow: 0 5px 22px #00000019;
+        border-radius: 9px;
+        padding: 11px 14px;
+        font-size: 15px;
+        line-height: 1.7;
+        min-width: 275px;
+        transition: opacity 0.12s;
+      }
+      .tooltip strong {
+        font-size: 17px;
+      }
+      .tip-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+      }
+      .tip-dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 7px;
+      }
+      .annotation-box {
+        fill: #fff;
+        stroke: #dfe4e8;
+      }
+      .annotation-title {
+        font-size: 13px;
+        font-weight: 800;
+      }
+      .annotation-copy {
+        font-size: 11px;
+        fill: #555;
+      }
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 25px;
+        padding-top: 10px;
+      }
+      .footer-text {
+        font-size: 19px;
+        line-height: 1.45;
+        color: #555;
+      }
+      .nar-logo {
+        width: 220px;
+        max-width: 26%;
+        height: auto;
+      }
+      .note {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 10px 0 8px;
+        padding: 9px 13px;
+        border: 1px solid #dfe4e8;
+        border-radius: 999px;
+        background: #f7f9fa;
+        color: #555;
+        font-size: 12px;
+        font-weight: 600;
+        font-style: normal;
+        box-shadow: 0 2px 8px #0000000a;
+      }
+      .focus-line {
+        stroke: #777;
+        stroke-width: 1;
+        stroke-dasharray: 3 3;
+      }
+      .focus-dot {
+        stroke: #fff;
+        stroke-width: 2;
+      }
+      .hit {
+        fill: transparent;
+        cursor: crosshair;
+      }
+      @media (max-width: 900px) {
+        .container {
+          padding: 16px 20px;
+        }
+        .chart-header h1 {
+          font-size: 27px;
+        }
+        .subtitle {
+          font-size: 18px;
+          margin: 12px 0 14px;
+        }
+        .footer-text {
+          font-size: 15px;
+        }
+        .nar-logo {
+          width: 170px;
+        }
+      }
+      @media (max-width: 600px) {
+        .container {
+          padding: 12px 14px 14px;
+        }
+        .chart-header {
+          gap: 8px;
+        }
+        h1 {
+          font-size: 18px;
+          line-height: 1.26;
+          letter-spacing: 0;
+        }
+        .subtitle {
+          font-size: 13px;
+          line-height: 1.6;
+          margin: 10px 0;
+        }
+        .tap-hint {
+          gap: 4px;
+          padding: 5px 7px 5px 6px;
+        }
+        .tap-icon {
+          font-size: 13px;
+        }
+        .tap-text {
+          font-size: 7px;
+        }
+        .desktop-text {
+          display: none;
+        }
+        .mobile-text {
+          display: block;
+        }
+        .controls {
+          gap: 7px;
+          margin: 10px 0 12px;
+          padding-bottom: 12px;
+        }
+        .filter {
+          font-size: 10px;
+          padding: 7px 10px;
+        }
+        .footer {
+          gap: 12px;
+        }
+        .footer-text {
+          font-size: 11px;
+          line-height: 1.55;
+        }
+        .nar-logo {
+          width: 110px;
+          max-width: 34%;
+        }
+        .tooltip {
+          font-size: 11px;
+          min-width: 210px;
+        }
+      }
+
+      .chart-title {
+        font-family: "Montserrat", Arial, sans-serif;
+        font-size: 34px;
+        line-height: 1.3;
+        font-weight: 700;
+        color: #333;
+        flex: 1 1 auto;
+        min-width: 0;
+        margin: 0;
+        letter-spacing: -0.5px;
+      }
+      .tap-hint.fancy {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        flex: 0 0 auto;
+        margin-left: auto;
+        padding: 7px 11px 7px 9px;
+        background: linear-gradient(180deg, #fafafa 0%, #ececec 100%);
+        border: 1px solid #d8d8d8;
+        border-radius: 8px;
+        box-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.05),
+          0 4px 10px rgba(0, 0, 0, 0.08);
+      }
+      .tap-hint.fancy .icon-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+      }
+      .tap-hint.fancy .tap-icon {
+        display: inline-block;
+        font-size: 18px;
+        line-height: 1;
+        color: #7a7a7a;
+        transform: rotate(-12deg);
+      }
+      .tap-hint.fancy .tap-text {
+        font-family: "Montserrat", Arial, sans-serif;
+        font-size: 10px;
+        line-height: 1.08;
+        font-style: italic;
+        font-weight: 700;
+        color: #6d6d6d;
+        text-align: left;
+        white-space: nowrap;
+      }
+      @media (hover: hover) and (pointer: fine) {
+        .tap-hint.fancy {
+          transition:
+            transform 0.18s ease,
+            box-shadow 0.18s ease,
+            border-color 0.18s ease;
+        }
+        .tap-hint.fancy:hover {
+          transform: translateY(-1px);
+          border-color: #cfcfcf;
+          box-shadow:
+            0 2px 4px rgba(0, 0, 0, 0.06),
+            0 8px 18px rgba(0, 0, 0, 0.1);
+        }
+      }
+      @media (max-width: 768px) {
+        .chart-title {
+          font-size: 22px;
+        }
+        .tap-hint.fancy {
+          padding: 6px 10px 6px 8px;
+          gap: 6px;
+        }
+        .tap-hint.fancy .tap-icon {
+          font-size: 16px;
+        }
+        .tap-hint.fancy .tap-text {
+          font-size: 9px;
+        }
+      }
+      @media (max-width: 480px) {
+        .chart-title {
+          font-size: 13px;
+          line-height: 1.26;
+        }
+        .tap-hint.fancy {
+          margin-left: 0;
+          margin-top: 2px;
+          padding: 5px 7px 5px 6px;
+          gap: 4px;
+          border-radius: 7px;
+        }
+        .tap-hint.fancy .tap-icon {
+          font-size: 13px;
+        }
+        .tap-hint.fancy .tap-text {
+          font-size: 7px;
+          line-height: 1.02;
+        }
+      }
+
+      /* Responsive editorial typography */
+      @media (max-width: 768px) {
+        .chart-title {
+          font-size: 21px !important;
+          line-height: 1.24 !important;
+        }
+        .subtitle {
+          font-size: 15px !important;
+          line-height: 1.52 !important;
+          margin: 12px 0 18px !important;
+        }
+      }
+      @media (max-width: 480px) {
+        .chart-title {
+          font-size: 18px !important;
+          line-height: 1.22 !important;
+          letter-spacing: -0.2px !important;
+        }
+        .subtitle {
+          font-size: 13.5px !important;
+          line-height: 1.5 !important;
+          margin: 11px 0 16px !important;
+        }
+        .chart-header {
+          align-items: flex-start !important;
+        }
+      }
+      @media (max-width: 360px) {
+        .chart-title {
+          font-size: 16px !important;
+        }
+        .subtitle {
+          font-size: 12.5px !important;
+          line-height: 1.48 !important;
+        }
+      }
+
+      .mobile-annotation-note {
+        display: none;
+      }
+      @media (max-width: 600px) {
+        .mobile-annotation-note {
+          display: block;
+          margin: 8px 0 10px;
+          padding: 10px 12px;
+          background: #f7faf8;
+          border-left: 3px solid #319b76;
+          border-radius: 5px;
+          color: #4b5358;
+          font-size: 11px;
+          line-height: 1.5;
+        }
+        .mobile-annotation-note strong {
+          color: #2b755d;
+          font-weight: 800;
+        }
+        .note-num {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 17px;
+          height: 17px;
+          margin-right: 4px;
+          border-radius: 50%;
+          background: #319b76;
+          color: #fff;
+          font-size: 10px;
+          line-height: 1;
+        }
+      }
+      @media (max-width: 380px) {
+        .mobile-annotation-note {
+          font-size: 10px;
+          padding: 8px 10px;
+        }
+      }
+    
+        /* Compact footer: crop transparent/white padding contained in the logo asset */
+        .container {
+          padding-bottom: 2px !important;
+        }
+        .footer {
+          align-items: center !important;
+          padding-top: 2px !important;
+          padding-bottom: 0 !important;
+          margin: 0 !important;
+          min-height: 0 !important;
+          overflow: hidden;
+        }
+        .footer-text,
+        .footer-text > div {
+          margin: 0 !important;
+        }
+        .nar-logo-crop {
+          width: 220px;
+          height: 64px;
+          max-width: 26%;
+          overflow: hidden;
+          flex: 0 0 auto;
+          position: relative;
+        }
+        .nar-logo-crop .nar-logo {
+          width: 220px;
+          max-width: none;
+          height: auto;
+          display: block;
+          margin: 0 !important;
+          transform: translateY(0);
+        }
+        @media (max-width: 900px) {
+          .container { padding-bottom: 2px !important; }
+          .nar-logo-crop { width: 170px; height: 50px; max-width: 28%; }
+          .nar-logo-crop .nar-logo { width: 170px; }
+        }
+        @media (max-width: 600px) {
+          .container { padding-bottom: 1px !important; }
+          .footer { padding-top: 1px !important; }
+          .nar-logo-crop { width: 110px; height: 33px; max-width: 34%; }
+          .nar-logo-crop .nar-logo { width: 110px; }
+        }
+
+        /* Large-screen footer tuning: keep footer compact at wide viewport sizes */
+        @media (min-width: 1200px) {
+          .container {
+            padding-bottom: 2px !important;
+          }
+          .footer {
+            align-items: center !important;
+            min-height: 0 !important;
+            padding-top: 2px !important;
+            padding-bottom: 0 !important;
+            margin-bottom: 0 !important;
+          }
+          .footer-text {
+            line-height: 1.35;
+          }
+          .nar-logo-crop {
+            width: 210px;
+            height: 60px;
+            max-width: 22%;
+          }
+          .nar-logo-crop .nar-logo {
+            width: 210px;
+          }
+        }
+        @media (min-width: 1600px) {
+          .container {
+            max-width: 1600px;
+            padding-bottom: 2px !important;
+          }
+          .nar-logo-crop {
+            width: 215px;
+            height: 61px;
+          }
+          .nar-logo-crop .nar-logo {
+            width: 215px;
+          }
+        }
+
+        /* Refined source / chart-credit typography */
+        .footer-text {
+          font-size: 15px !important;
+          line-height: 1.38 !important;
+          font-weight: 400;
+        }
+        @media (max-width: 900px) {
+          .footer-text {
+            font-size: 13px !important;
+            line-height: 1.4 !important;
+          }
+        }
+        @media (max-width: 600px) {
+          .footer-text {
+            font-size: 10.5px !important;
+            line-height: 1.45 !important;
+          }
+        }
+        @media (min-width: 1600px) {
+          .footer-text {
+            font-size: 15px !important;
+          }
+        }
