@@ -1,0 +1,348 @@
+:root { --blue:#006bb7; --coral:#ff7f61; --green:#319b76; --ink:#333; --muted:#555; --grid:#d3d9de; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#fff; color:var(--ink); font-family:"Montserrat",Arial,sans-serif; }
+    .container { max-width:1600px; margin:0 auto; padding:18px 24px 4px; }
+    .chart-header { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .chart-title { margin:0; flex:1 1 auto; min-width:0; font-size:34px; line-height:1.25; font-weight:700; letter-spacing:-.5px; }
+    .tap-hint { display:inline-flex; align-items:center; gap:7px; flex:none; padding:7px 11px 7px 9px; background:linear-gradient(#fafafa,#ececec); border:1px solid #d8d8d8; border-radius:8px; box-shadow:0 1px 2px #0000000d,0 4px 10px #00000014; }
+    .tap-icon { font-size:18px; color:#7a7a7a; transform:rotate(-12deg); }
+    .tap-text { font-size:10px; line-height:1.08; font-style:italic; font-weight:700; color:#6d6d6d; white-space:nowrap; }
+    .mobile-text { display:none; }
+    .subtitle { margin:14px 0 22px; max-width:900px; font-size:20px; line-height:1.5; color:#444; }
+    .controls { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; }
+    .filter { font:600 12px Montserrat,Arial,sans-serif; background:#fff; color:#333; border:1px solid #c9ced3; border-radius:999px; padding:7px 12px; cursor:pointer; transition:.18s; }
+    .filter:hover { background:#f5f7f8; }
+    .filter.active { background:#333; border-color:#333; color:#fff; }
+    .chart-wrap { position:relative; padding-top:4px; }
+    svg { width:100%; height:auto; display:block; overflow:visible; font-family:"Montserrat",Arial,sans-serif; }
+    .grid line { stroke:var(--grid); stroke-dasharray:2 4; }
+    .grid path, .axis path { display:none; }
+    .axis text { fill:#4f5962; font-size:14px; font-weight:500; }
+    .axis line { display:none; }
+    .category-label { fill:#333; font-weight:700; }
+    .value-label { font-weight:800; }
+    .stem { stroke-width:5; stroke-linecap:round; }
+    .stem-highlight { stroke-width:6; }
+    .dot { stroke:#fff; stroke-width:2.5; cursor:pointer; }
+    .all-benchmark { stroke:var(--blue); stroke-width:1.6; stroke-dasharray:5 5; opacity:.7; }
+    .tooltip { position:absolute; z-index:5; opacity:0; pointer-events:none; min-width:245px; padding:12px 14px; background:#fff; border:1px solid #dfe4e8; border-radius:9px; box-shadow:0 5px 22px #00000019; font-size:15px; line-height:1.55; }
+    .tooltip strong { display:block; margin-bottom:3px; font-size:16px; }
+    .tooltip .value { color:var(--green); font-size:21px; font-weight:800; }
+    .story-note { display:flex; gap:9px; align-items:flex-start; margin:9px 0 10px; padding:10px 13px; max-width:760px; border-left:3px solid var(--green); background:#f6faf8; border-radius:5px; color:#4d565b; font-size:12px; line-height:1.5; }
+    .story-note strong { color:#26775c; }
+    .note-num { width:19px; height:19px; display:inline-flex; align-items:center; justify-content:center; flex:none; border-radius:50%; background:var(--green); color:#fff; font-size:10px; font-weight:800; }
+    .footer { display:flex; justify-content:space-between; align-items:center; gap:20px; padding-top:2px; margin:0; overflow:hidden; }
+    .footer-text { color:#555; font-size:15px; line-height:1.38; }
+    .nar-logo-crop { width:210px; height:60px; max-width:22%; overflow:hidden; flex:none; }
+    .nar-logo { width:210px; display:block; margin:0; }
+    @media (max-width:900px) {
+      .container { padding:16px 20px 3px; }
+      .chart-title { font-size:22px; }
+      .subtitle { max-width:760px; font-size:16px; margin:12px 0 18px; }
+      .footer-text { font-size:13px; }
+      .nar-logo-crop { width:170px; height:50px; max-width:28%; }
+      .nar-logo { width:170px; }
+    }
+    @media (max-width:600px) {
+      .container { padding:12px 14px 2px; }
+      .chart-header { align-items:flex-start; gap:8px; }
+      .chart-title { font-size:18px; line-height:1.22; }
+      .subtitle { max-width:100%; font-size:13.5px; line-height:1.5; margin:10px 0 15px; }
+      .tap-hint { padding:5px 7px 5px 6px; gap:4px; }
+      .tap-icon { font-size:13px; }
+      .tap-text { font-size:7px; }
+      .desktop-text { display:none; }
+      .mobile-text { display:block; }
+      .controls { gap:6px; }
+      .filter { font-size:9px; padding:6px 8px; }
+      .axis text { font-size:11px; }
+      .story-note { font-size:10.5px; margin-top:7px; }
+      .footer-text { font-size:10.5px; }
+      .nar-logo-crop { width:110px; height:33px; max-width:34%; }
+      .nar-logo { width:110px; }
+    }
+    @media (max-width:380px) {
+      .chart-title { font-size:16px; }
+      .subtitle { font-size:12.5px; }
+    }
+
+    .mobile-story-note { display:none; }
+    @media (max-width:600px) {
+      .mobile-story-note { display:block; margin:7px 0 10px; padding:9px 11px; background:#f6faf8; border-left:3px solid #077A8A; border-radius:5px; color:#4d565b; font-size:10.5px; line-height:1.5; }
+      .mobile-story-note strong { color:#3b8e6c; }
+      .mobile-story-note .note-num { margin-right:4px; }
+    }
+
+    .chart-header { display:flex; align-items:center; justify-content:space-between; gap:16px; width:100%; box-sizing:border-box; }
+    .tap-hint.fancy { display:inline-flex; align-items:center; justify-content:center; gap:7px; flex:0 0 auto; margin-left:auto; box-sizing:border-box; padding:7px 11px 7px 9px; background:linear-gradient(180deg,#fafafa 0%,#ececec 100%); border:1px solid #d8d8d8; border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,.05),0 4px 10px rgba(0,0,0,.08); }
+    .tap-hint.fancy .icon-wrap { display:flex; align-items:center; justify-content:center; flex:0 0 auto; }
+    .tap-hint.fancy .tap-icon { display:inline-block; font-size:18px; line-height:1; color:#7a7a7a; transform:rotate(-12deg); }
+    .tap-hint.fancy .tap-text { font-family:"Montserrat",Arial,sans-serif; font-size:10px; line-height:1.08; font-style:italic; font-weight:700; color:#6d6d6d; letter-spacing:0; text-align:left; white-space:nowrap; }
+    .tap-hint.fancy .desktop-text { display:block; }
+    .tap-hint.fancy .mobile-text { display:none; }
+    @media (hover:hover) and (pointer:fine) { .tap-hint.fancy { transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease; } .tap-hint.fancy:hover { transform:translateY(-1px); border-color:#cfcfcf; box-shadow:0 2px 4px rgba(0,0,0,.06),0 8px 18px rgba(0,0,0,.10); } }
+    @media (max-width:768px) { .chart-header { align-items:center; gap:12px; } .chart-title { font-size:22px; line-height:1.3; } .tap-hint.fancy { padding:6px 10px 6px 8px; gap:6px; } .tap-hint.fancy .tap-icon { font-size:16px; } .tap-hint.fancy .tap-text { font-size:9px; line-height:1.06; } }
+    @media (max-width:480px) { .chart-header { flex-direction:row; align-items:flex-start; justify-content:space-between; gap:8px; } .chart-title { font-size:13px; line-height:1.26; flex:1 1 auto; min-width:0; } .tap-hint.fancy { flex:0 0 auto; align-self:flex-start; margin-left:0; margin-top:2px; padding:5px 7px 5px 6px; gap:4px; border-radius:7px; } .tap-hint.fancy .tap-icon { font-size:13px; } .tap-hint.fancy .tap-text { font-size:7px; line-height:1.02; white-space:nowrap; } .tap-hint.fancy .desktop-text { display:none; } .tap-hint.fancy .mobile-text { display:block; } }
+
+    /* Subtitle width only: preserve existing font size at every breakpoint */
+    @media (min-width: 901px) {
+      .subtitle {
+        width: auto;
+        max-width: 1180px;
+      }
+    }
+    @media (min-width: 1400px) {
+      .subtitle {
+        max-width: 1280px;
+      }
+    }
+    @media (min-width: 1600px) {
+      .subtitle {
+        max-width: 1360px;
+      }
+    }
+
+    .x-tick-mark {
+      stroke:#69747d !important;
+      stroke-width:1.4 !important;
+      stroke-dasharray:none !important;
+    }
+    .x-baseline {
+      stroke:#69747d;
+      stroke-width:1.1;
+    }
+    @media (max-width:600px) {
+      .x-tick-mark { stroke-width:1.2 !important; }
+      .x-baseline { stroke-width:1; }
+    }
+
+    /* One clear tick for every x-axis number */
+    .x-axis .tick text {
+      font-weight:600;
+    }
+    .x-axis .x-tick-mark {
+      stroke:#69747d !important;
+      stroke-width:1.5 !important;
+      stroke-linecap:round;
+    }
+    @media (max-width:600px) {
+      .x-axis .x-tick-mark {
+        stroke-width:1.25 !important;
+      }
+    }
+
+    /* X-axis reference treatment: regular-weight numbers with subtle vertical tick marks */
+    .x-axis .tick text {
+      font-weight:400 !important;
+      fill:#555;
+    }
+    .x-axis .x-tick-mark {
+      stroke:#d8dde1 !important;
+      stroke-width:1.25 !important;
+      stroke-linecap:butt;
+    }
+    .x-baseline {
+      display:none !important;
+    }
+    @media (max-width:600px) {
+      .x-axis .x-tick-mark {
+        stroke-width:1 !important;
+      }
+    }
+
+    /* Restored subtle horizontal x-axis baseline */
+    .x-baseline.restored {
+      display:block !important;
+      stroke:#aeb6bc;
+      stroke-width:1;
+    }
+    @media (max-width:600px) {
+      .x-baseline.restored { stroke-width:.9; }
+    }
+
+    /* Vertical tick at every x-axis number */
+    .x-axis .x-tick-mark {
+      display:block !important;
+      stroke:#cbd2d7 !important;
+      stroke-width:1.2 !important;
+      stroke-dasharray:none !important;
+      shape-rendering:crispEdges;
+      pointer-events:none;
+    }
+    .x-axis .tick text {
+      font-weight:400 !important;
+    }
+    @media (max-width:600px) {
+      .x-axis .x-tick-mark {
+        stroke-width:1 !important;
+      }
+    }
+
+    /* Mobile editorial hierarchy aligned with the established NAR graphic system */
+    @media (max-width:600px) {
+      .chart-title {
+        font-size:26px !important;
+        line-height:1.28 !important;
+        font-weight:700 !important;
+        letter-spacing:-0.35px !important;
+      }
+      .subtitle {
+        width:100% !important;
+        max-width:100% !important;
+        font-size:18px !important;
+        line-height:1.55 !important;
+        margin:22px 0 20px !important;
+        letter-spacing:0 !important;
+      }
+    }
+    @media (max-width:480px) {
+      .chart-title {
+        font-size:25px !important;
+        line-height:1.27 !important;
+      }
+      .subtitle {
+        font-size:17px !important;
+        line-height:1.58 !important;
+        margin:20px 0 18px !important;
+      }
+    }
+    @media (max-width:380px) {
+      .chart-title {
+        font-size:22px !important;
+        line-height:1.28 !important;
+      }
+      .subtitle {
+        font-size:16px !important;
+        line-height:1.55 !important;
+      }
+    }
+
+    /* Mobile header system matched to the Share of Home Buyers graphic */
+    @media (max-width: 600px) {
+      .container {
+        padding: 16px 14px 2px !important;
+      }
+      .chart-header {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        justify-content: space-between !important;
+        gap: 8px !important;
+        width: 100% !important;
+      }
+      .chart-title {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        font-family: "Montserrat", Arial, sans-serif !important;
+        font-size: 18px !important;
+        line-height: 1.26 !important;
+        font-weight: 700 !important;
+        letter-spacing: 0 !important;
+        color: #333 !important;
+      }
+      .tap-hint.fancy {
+        flex: 0 0 auto !important;
+        align-self: flex-start !important;
+        margin-left: 0 !important;
+        margin-top: 2px !important;
+        padding: 5px 7px 5px 6px !important;
+        gap: 4px !important;
+        border-radius: 7px !important;
+      }
+      .tap-hint.fancy .tap-icon {
+        font-size: 13px !important;
+      }
+      .tap-hint.fancy .tap-text {
+        font-size: 7px !important;
+        line-height: 1.02 !important;
+      }
+      .subtitle {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 15px 0 18px !important;
+        font-family: "Montserrat", Arial, sans-serif !important;
+        font-size: 13px !important;
+        line-height: 1.60 !important;
+        font-weight: 400 !important;
+        letter-spacing: 0 !important;
+        color: #333 !important;
+      }
+    }
+    @media (max-width: 480px) {
+      .chart-title {
+        font-size: 18px !important;
+        line-height: 1.26 !important;
+      }
+      .subtitle {
+        font-size: 13px !important;
+        line-height: 1.60 !important;
+        margin: 15px 0 18px !important;
+      }
+    }
+    @media (max-width: 380px) {
+      .chart-title {
+        font-size: 17px !important;
+      }
+      .subtitle {
+        font-size: 12.5px !important;
+        line-height: 1.58 !important;
+      }
+    }
+  
+    /* FINAL mobile header typography: exact verified Share of Home Buyers rules */
+    @media (max-width: 768px) {
+      .chart-title {
+        font-size: 21px !important;
+        line-height: 1.24 !important;
+      }
+      .subtitle {
+        font-size: 15px !important;
+        line-height: 1.52 !important;
+        margin: 12px 0 18px !important;
+      }
+    }
+    @media (max-width: 480px) {
+      .container {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+      }
+      .chart-header {
+        align-items: flex-start !important;
+        gap: 8px !important;
+      }
+      .chart-title {
+        font-size: 18px !important;
+        line-height: 1.22 !important;
+        letter-spacing: -0.2px !important;
+      }
+      .subtitle {
+        font-size: 13.5px !important;
+        line-height: 1.5 !important;
+        margin: 11px 0 16px !important;
+        color: #333 !important;
+      }
+      .tap-hint.fancy {
+        margin-left: 0 !important;
+        margin-top: 2px !important;
+        padding: 5px 7px 5px 6px !important;
+        gap: 4px !important;
+        border-radius: 7px !important;
+      }
+      .tap-hint.fancy .tap-icon {
+        font-size: 13px !important;
+      }
+      .tap-hint.fancy .tap-text {
+        font-size: 7px !important;
+        line-height: 1.02 !important;
+      }
+    }
+    @media (max-width: 360px) {
+      .chart-title {
+        font-size: 16px !important;
+      }
+      .subtitle {
+        font-size: 12.5px !important;
+        line-height: 1.48 !important;
+      }
+    }
